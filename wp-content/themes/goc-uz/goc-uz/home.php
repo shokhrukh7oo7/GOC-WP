@@ -1,0 +1,969 @@
+<?php
+/*
+    Template name: Главная страница
+*/
+get_header();
+?>
+
+<main>
+    <!-- SLIDER -->
+    <section class="slider" id="slider" aria-label="Слайдер — главный экран">
+        <!-- Единый nav поверх всех слайдов -->
+        <div class="container">
+            <nav class="slider-nav" aria-label="Навигация слайдера">
+                <button class="nav-arrow" id="prev" aria-label="Предыдущий слайд">
+                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-left.svg" alt="" />
+                </button>
+                <div class="nav-dots" id="dots" role="tablist" aria-label="Слайды">
+                    <button class="nav-dot active" role="tab" aria-selected="true" aria-label="Слайд 1"
+                        data-index="0"></button>
+                    <button class="nav-dot" role="tab" aria-selected="false" aria-label="Слайд 2"
+                        data-index="1"></button>
+                    <button class="nav-dot" role="tab" aria-selected="false" aria-label="Слайд 3"
+                        data-index="2"></button>
+                </div>
+                <button class="nav-arrow" id="next" aria-label="Следующий слайд">
+                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg" alt="" />
+                </button>
+            </nav>
+        </div>
+
+        <!-- Slide 1 -->
+        <div class="slide active" data-theme="dark" role="group" aria-label="Слайд 1 из 3">
+            <div class="slide__video-wrap">
+                <video autoplay muted loop playsinline>
+                    <source src="<?= get_template_directory_uri() ?> /assets/slide-8.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="container">
+                <div class="slide__content">
+                    <div class="headline">
+                        <h1>Инфраструктура связи <span>нового поколения</span></h1>
+                    </div>
+                    <div class="description">
+                        <p class="eyebrow">N°01 — Manifesto</p>
+                        <p class="body-text">
+                            Производство оптического кабеля для телекоммуникаций,
+                            энергетики и цифровой инфраструктуры. Ташкент • Сеул • с 2019
+                            года.
+                        </p>
+                        <div class="cta-row">
+                            <a href="#" class="btn btn--primary">
+                                Получить КП за 1 час
+                                <span class="btn-arrow" aria-hidden="true"></span>
+                            </a>
+                            <a href="#" class="btn btn--outline">Подобрать кабель</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="stats-bar" aria-label="Ключевые показатели">
+                    <div class="stat">
+                        <p class="stat__label">Capacity · Factory 1</p>
+                        <p class="stat__value">120 000</p>
+                        <p class="stat__unit">км кабеля / год</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Capacity · Factory 2</p>
+                        <p class="stat__value">24 000</p>
+                        <p class="stat__unit">км кабеля / год</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">CORD Output</p>
+                        <p class="stat__value">25 000</p>
+                        <p class="stat__unit">штук / месяц</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Established</p>
+                        <p class="stat__value">2019</p>
+                        <p class="stat__unit">совместное предприятие</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" data-theme="light" role="group" aria-label="Слайд 2 из 3">
+            <div class="slide__video-wrap">
+                <video autoplay muted loop playsinline>
+                    <source src="<?= get_template_directory_uri() ?> /assets/slide-7.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="container">
+                <div class="slide__content">
+                    <div class="headline">
+                        <h1>Инфраструктура связи <span>нового поколения</span></h1>
+                    </div>
+                    <div class="description">
+                        <p class="eyebrow">N°02 — Technology</p>
+                        <p class="body-text">
+                            Производство оптического кабеля для телекоммуникаций,
+                            энергетики и цифровой инфраструктуры. Ташкент • Сеул • с 2019
+                            года.
+                        </p>
+                        <div class="cta-row">
+                            <a href="#" class="btn btn--primary">
+                                Узнать подробнее
+                                <span class="btn-arrow" aria-hidden="true"></span>
+                            </a>
+                            <a href="#" class="btn btn--outline">Наши решения</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="stats-bar">
+                    <div class="stat">
+                        <p class="stat__label">Стран-партнёров</p>
+                        <p class="stat__value">18</p>
+                        <p class="stat__unit">по всему миру</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Проектов в год</p>
+                        <p class="stat__value">340+</p>
+                        <p class="stat__unit">реализовано</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Сотрудников</p>
+                        <p class="stat__value">1 200</p>
+                        <p class="stat__unit">специалистов</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Сертификаты</p>
+                        <p class="stat__value">ISO</p>
+                        <p class="stat__unit">9001 / 14001</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" data-theme="dark" role="group" aria-label="Слайд 3 из 3">
+            <div class="slide__video-wrap">
+                <video autoplay muted loop playsinline>
+                    <source src="<?= get_template_directory_uri() ?> /assets/slide-5.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="container">
+                <div class="slide__content">
+                    <div class="headline">
+                        <h1>Инфраструктура связи <span>нового поколения</span></h1>
+                    </div>
+                    <div class="description">
+                        <p class="eyebrow">N°03 — Reliability</p>
+                        <p class="body-text">
+                            Производство оптического кабеля для телекоммуникаций,
+                            энергетики и цифровой инфраструктуры. Ташкент • Сеул • с 2019
+                            года.
+                        </p>
+                        <div class="cta-row">
+                            <a href="#" class="btn btn--primary">
+                                Запросить образец
+                                <span class="btn-arrow" aria-hidden="true"></span>
+                            </a>
+                            <a href="#" class="btn btn--outline">Технические данные</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="stats-bar">
+                    <div class="stat">
+                        <p class="stat__label">Срок службы</p>
+                        <p class="stat__value">25+</p>
+                        <p class="stat__unit">лет гарантии</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Полоса пропускания</p>
+                        <p class="stat__value">400G</p>
+                        <p class="stat__unit">макс. скорость</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Температура</p>
+                        <p class="stat__value">−60°C</p>
+                        <p class="stat__unit">до +85°C</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Стандарты</p>
+                        <p class="stat__value">ITU-T</p>
+                        <p class="stat__unit">G.652 / G.657</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section>
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-left">
+                    <p>Factory • Tashkent</p>
+                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/banner-left.png" alt="image" />
+                </div>
+
+                <div class="about-right">
+                    <div class="about-right-top">
+                        <span>№02 - О компании</span>
+                        <h1>Узбекско-корейское предприятие.</h1>
+                        <p>
+                            Компания GOC-UZ является совместным предприятием Узбекистана и
+                            Южной Кореи, которая была основана 2019 году с целью развития
+                            современной кабельной и телекоммуникационной инфраструктуры в
+                            Узбекистане. С момента своего основания компания ориентируется
+                            на внедрение передовых технологий, соответствие международным
+                            стандартам и создание продукции высокого качества.
+                        </p>
+                        <a href="#">Подробнее »</a>
+                    </div>
+
+                    <div class="about-right-center">
+                        <div class="about-sertificate-wrapper">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/sertificate.jpg"
+                                alt="images" />
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/sertificate.jpg"
+                                alt="images" />
+                        </div>
+                        <p>
+                            Два завода. Пятнадцать производственных площадок. Один контур
+                            качества.
+                        </p>
+                    </div>
+
+                    <div class="about-right-bottom">
+                        <div class="factory-wrapper">
+                            <div class="factory-item">
+                                <span>Factory № 1</span>
+                                <h6>120 000<span> км/год</span></h6>
+                                <p>Внутренная установка • 6 площадок</p>
+                            </div>
+                            <div class="factory-item">
+                                <span>Factory № 2</span>
+                                <h6>24 000<span> км/год</span></h6>
+                                <p>Наружная установка • 9 площадок</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application -->
+    <section>
+        <div class="container">
+            <div class="application-wrapper">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 03 - Применение</p>
+
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>Оптика для любой среды.</h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                От городской телеком-инфраструктуры до промышленных объектов
+                                в агрессивных средах. Подбираем кабель под параметры среды -
+                                не наоборот.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-left-wrapper">
+                    <div class="items">
+                        <div class="item-header">
+                            <a href="#">01 / 06
+                                <span>
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="item-body">
+                            <h2>Телеком сети</h2>
+                            <p>Магистральные линии, FTTx, последняя миля</p>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="item-header">
+                            <a href="#">01 / 06
+                                <span>
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="item-body">
+                            <h2>Телеком сети</h2>
+                            <p>Магистральные линии, FTTx, последняя миля</p>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="item-header">
+                            <a href="#">01 / 06
+                                <span>
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="item-body">
+                            <h2>Телеком сети</h2>
+                            <p>Магистральные линии, FTTx, последняя миля</p>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="item-header">
+                            <a href="#">01 / 06
+                                <span>
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="item-body">
+                            <h2>Телеком сети</h2>
+                            <p>Магистральные линии, FTTx, последняя миля</p>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="item-header">
+                            <a href="#">01 / 06
+                                <span>
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="item-body">
+                            <h2>Телеком сети</h2>
+                            <p>Магистральные линии, FTTx, последняя миля</p>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="item-header">
+                            <a href="#">01 / 06
+                                <span>
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="item-body">
+                            <h2>Телеком сети</h2>
+                            <p>Магистральные линии, FTTx, последняя миля</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutuin -->
+    <section>
+        <div class="container">
+            <div class="application-wrapper">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 04 - Готовые решение</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Решения <br />
+                                под задачи
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                Четыре категории, покрывающие 94% запросов клиентов. Для
+                                каждой - предопределённые конструкции, сроки, цуна.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solutions">
+                    <!-- 01 Drop Cable — light -->
+                    <div class="cell cell--light">
+                        <span class="cell__label">№01 — Solution</span>
+                        <button class="cell__arrow" aria-label="Подробнее">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
+                                alt="image" />
+                        </button>
+                        <img class="cell__img"
+                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-1.png"
+                            alt="Дроп-кабель" />
+                        <div class="cell__text">
+                            <h2 class="cell__title">Дроп-кабель</h2>
+                            <p class="cell__desc">
+                                Компактный drop-кабель до абонента. Быстрая разделка, низкая
+                                масса на километр.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 02 Aerial single-mode — dark -->
+                    <div class="cell cell--dark">
+                        <span class="cell__label">№02 — Solution</span>
+                        <button class="cell__arrow" aria-label="Подробнее">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
+                                alt="image" />
+                        </button>
+                        <img class="cell__img"
+                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-2.png"
+                            alt="Воздушный одномодовый кабель" />
+                        <div class="cell__text">
+                            <h2 class="cell__title">Воздушный одномодовый кабель</h2>
+                            <p class="cell__desc">
+                                Дальнобойная одномодовая оптика — защищённая, маслостойкая,
+                                пригодная для траншеи и подвеса.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 03 Indoor networks — light -->
+                    <div class="cell cell--light">
+                        <span class="cell__label">№03 — Solution</span>
+                        <button class="cell__arrow" aria-label="Подробнее">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
+                                alt="image" />
+                        </button>
+                        <img class="cell__img"
+                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-3.png"
+                            alt="Внутренние сети" />
+                        <div class="cell__text">
+                            <h2 class="cell__title">Внутренние сети</h2>
+                            <p class="cell__desc">
+                                LSZH-оболочка для монтажа в зданиях. Пассивные огнестойкие
+                                исполнения CORD.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 04 Industrial — light -->
+                    <div class="cell cell--light">
+                        <span class="cell__label">№04 — Solution</span>
+                        <button class="cell__arrow" aria-label="Подробнее">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
+                                alt="image" />
+                        </button>
+                        <img class="cell__img"
+                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-4.png"
+                            alt="Промышленные объекты" />
+                        <div class="cell__text">
+                            <h2 class="cell__title">Промышленные объекты</h2>
+                            <p class="cell__desc">
+                                Армированная конструкция для агрессивных сред, вибрации и
+                                механических нагрузок.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configuration -->
+    <section>
+        <div class="configurator-wrapper">
+            <div class="container">
+                <div class="configurator">
+                    <!-- LEFT -->
+                    <div class="left">
+                        <p class="eyebrow">№ 05 — Конфигуратор</p>
+                        <h1 class="headline">Подберите кабель под ваш проект.</h1>
+                        <p class="subtitle">
+                            Три параметра — и вы получите артикул, конструкцию и цену. Без
+                            звонка менеджеру.
+                        </p>
+                        <p class="divider-label">или</p>
+                        <p class="tz-link">
+                            отправьте нам ТЗ — подберём вручную, ответ за 1 час.
+                        </p>
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="right">
+                        <div class="form-rows">
+                            <!-- Row 01: Project type -->
+                            <div class="form-row">
+                                <label class="row-label" for="project-type">
+                                    <span class="row-num">01</span>
+                                    Тип проекта
+                                </label>
+                                <div class="row-select-wrap">
+                                    <select class="row-select" id="project-type" onchange="onSelect(this)">
+                                        <option value="" disabled selected>
+                                            Выберите применение
+                                        </option>
+                                        <option value="energy">Энергоснабжение</option>
+                                        <option value="control">
+                                            Управление и сигнализация
+                                        </option>
+                                        <option value="data">Передача данных</option>
+                                        <option value="industrial">
+                                            Промышленная автоматизация
+                                        </option>
+                                        <option value="transport">
+                                            Транспортная инфраструктура
+                                        </option>
+                                        <option value="construction">Строительство</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Row 02: Conditions -->
+                            <div class="form-row">
+                                <label class="row-label" for="conditions">
+                                    <span class="row-num">02</span>
+                                    Условия
+                                </label>
+                                <div class="row-select-wrap">
+                                    <select class="row-select" id="conditions" onchange="onSelect(this)">
+                                        <option value="" disabled selected>
+                                            Условия прокладки
+                                        </option>
+                                        <option value="ground">В земле</option>
+                                        <option value="air">
+                                            В воздухе (открытая прокладка)
+                                        </option>
+                                        <option value="pipe">В трубах и каналах</option>
+                                        <option value="water">Подводная прокладка</option>
+                                        <option value="explosive">Взрывоопасная зона</option>
+                                        <option value="corrosive">Агрессивная среда</option>
+                                        <option value="indoor">Внутри помещений</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Row 03: Length -->
+                            <div class="form-row">
+                                <label class="row-label" for="length">
+                                    <span class="row-num">03</span>
+                                    Длина, м
+                                </label>
+                                <input class="row-input" type="number" id="length" placeholder="напр. 12 000" min="1"
+                                    oninput="onLengthInput(this)" />
+                                <span class="row-suffix">М</span>
+                            </div>
+                        </div>
+
+                        <!-- Estimate + CTA -->
+                        <div class="estimate-row">
+                            <div class="estimate-info">
+                                <span class="estimate-label">Estimate&nbsp;·</span>
+                                <span class="estimate-value" id="estimate-value">—</span>
+                            </div>
+                            <button class="btn-cta" onclick="showSolution()">
+                                Показать решение
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
+                                    alt="icon" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Tabs (catalog) -->
+    <section>
+        <div class="container">
+            <div class="catalog-wrapper">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 06 - Каталог</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Каталог <br />
+                                продукции.
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                128 SKU. Если нужного артикула нет - произведем под заказ за
+                                10-14 дней.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="catalog-tabs-wrapper">
+                    <!-- ================= TABS (static) ================= -->
+                    <nav class="tabs" role="tablist" aria-label="Категории продуктов">
+                        <button class="tab is-active" role="tab" aria-selected="true" data-cat="all">
+                            Все продукты<span class="count">128</span>
+                        </button>
+                        <button class="tab" role="tab" aria-selected="false" data-cat="outdoor">
+                            Наружная прокладка<span class="count">42</span>
+                        </button>
+                        <button class="tab" role="tab" aria-selected="false" data-cat="indoor">
+                            Внутренняя прокладка<span class="count">36</span>
+                        </button>
+                        <button class="tab" role="tab" aria-selected="false" data-cat="ftth">
+                            FTTH / Drop<span class="count">21</span>
+                        </button>
+                        <button class="tab" role="tab" aria-selected="false" data-cat="armored">
+                            Бронированные<span class="count">18</span>
+                        </button>
+                        <button class="tab" role="tab" aria-selected="false" data-cat="special">
+                            Спец. исполнения<span class="count">11</span>
+                        </button>
+                    </nav>
+
+                    <!-- ================= GRID (static cards) ================= -->
+                    <div class="grid" id="grid">
+                        <!-- 1. Aerial Cable -->
+                        <article class="card" data-cats="outdoor special">
+                            <div class="card__sku">
+                                <p>SKU · <span>OR-024</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-1.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">Aerial Cable</h3>
+                                <p class="card__meta">2–144 волокна · Self-supporting</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#or-024">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 2. Patchcord -->
+                        <article class="card" data-cats="indoor">
+                            <div class="card__sku">
+                                <p>SKU · <span>OM-118</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-2.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">Patchcord</h3>
+                                <p class="card__meta">Armored · до 288 волокон</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#om-118">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 3. ADSS Aramid -->
+                        <article class="card" data-cats="ftth outdoor">
+                            <div class="card__sku">
+                                <p>SKU · <span>OM-033</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-3.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">ADSS&nbsp; Aramid</h3>
+                                <p class="card__meta">Flat · 1–12 волокон · FTTH</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#om-033">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 4. Drop cable -->
+                        <article class="card" data-cats="ftth">
+                            <div class="card__sku">
+                                <p>SKU · <span>OM-286</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-4.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">Drop cable</h3>
+                                <p class="card__meta">Double-jacketed · 48–432 волокон</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#om-286">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 5. Многомодульный грунтовый -->
+                        <article class="card" data-cats="outdoor armored">
+                            <div class="card__sku">
+                                <p>SKU · <span>OR-041</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-5.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">Многомодульный грунтовый</h3>
+                                <p class="card__meta">Огнестойкий · 2–24 волокон</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#or-041">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 6. ADSS -->
+                        <article class="card" data-cats="outdoor">
+                            <div class="card__sku">
+                                <p>SKU · <span>OM-309</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-6.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">ADSS</h3>
+                                <p class="card__meta">Diel. · Span до 1200m</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#om-309">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 7. Indoor Riser -->
+                        <article class="card" data-cats="indoor">
+                            <div class="card__sku">
+                                <p>SKU · <span>OM-055</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-7.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">Indoor Riser</h3>
+                                <p class="card__meta">Универсальный · 4–96 волокон</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#om-055">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 8. Воздушный многомодульный -->
+                        <article class="card" data-cats="outdoor special">
+                            <div class="card__sku">
+                                <p>SKU · <span>OR-412</span></p>
+                            </div>
+                            <div class="card__media">
+                                <img src="<?= get_template_directory_uri() ?> /assets/images/home/catalog/cat-8.png"
+                                    alt="image" />
+                            </div>
+                            <div class="card__body">
+                                <h3 class="card__title">Воздушный многомодульный</h3>
+                                <p class="card__meta">Грозозащитный трос · 24–96</p>
+                            </div>
+                            <div class="card__more">
+                                <a class="card__link" href="#or-412">Подробнее
+                                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-top.svg"
+                                        alt="image" />
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- ================= FOOTER ================= -->
+                <div class="catalog__footer">
+                    <a href="#" class="catalog-btn-all">
+                        Смотреть весь каталог (128)
+                        <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
+                            alt="image" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reason -->
+    <section>
+        <div class="container">
+            <div class="catalog-wrapper reason-container">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 07 - Почему GOC-UZ</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Четыре причины, <br />
+                                по которым нас <br />
+                                выбирают.
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reason-items-wrapper">
+                    <div class="item">
+                        <div class="date-wrapper">
+                            <p>01 / 04</p>
+                        </div>
+
+                        <div class="content">
+                            <h5>Собственное производство</h5>
+                            <p>
+                                Два завода 15 производственных площадок. Полный цикл от
+                                превормы до готового кабеля.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date-wrapper">
+                            <p>02 / 04</p>
+                        </div>
+
+                        <div class="content">
+                            <h5>Быстрая логистика</h5>
+                            <p>
+                                КП за 1 час. Отгрузка со склада в Ташкенте и Сеуле. Доставка
+                                по СНГ и ЦА
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date-wrapper">
+                            <p>03 / 04</p>
+                        </div>
+
+                        <div class="content">
+                            <h5>Гибкость под задачи</h5>
+                            <p>
+                                Небольшая партии, нестандартные длины, индивидуальная
+                                маркировка и оболочка.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date-wrapper">
+                            <p>04 / 04</p>
+                        </div>
+
+                        <div class="content">
+                            <h5>Контроль качества</h5>
+                            <p>
+                                OTDR-тестирование каждой барабанной катушк. ISO 9001, IEC
+                                60794. ГОСТ Р.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reason-partner-wrapper">
+                    <h3>Нам доверяют</h3>
+                    <div class="partner-items-wrapper">
+                        <div class="item">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
+                        </div>
+                        <div class="item">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
+                        </div>
+                        <div class="item">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
+                        </div>
+                        <div class="item">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
+                        </div>
+                        <div class="item">
+                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request -->
+    <section class="footer-request-wrapper">
+        <div class="container">
+            <div class="catalog-wrapper">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 08 - Связаться</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Оставьте <br />
+                                заявку. <br />
+                                <span>Ответим за 1 час.</span>
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <div class="form-wrapper">
+                                <form>
+                                    <div class="item">
+                                        <label class="field-label" for="name">Имя</label>
+                                        <input class="field-input" id="name" type="text"
+                                            placeholder="Как к вам обращаться" />
+                                    </div>
+                                    <div class="item">
+                                        <label class="field-label" for="phone">Телефон</label>
+                                        <input class="field-input" id="phone" type="tel"
+                                            placeholder="+998 __ ___ __ __" />
+                                    </div>
+                                    <div class="item">
+                                        <label class="field-label" for="comment">Комментарий</label>
+                                        <input class="field-input" id="comment" type="text"
+                                            placeholder="Коротко опишите проект" />
+                                    </div>
+                                    <div class="item">
+                                        <p>
+                                            Нажимая "Отправить", вы соглашаетесь с политикой
+                                            обработки персональным данных.
+                                        </p>
+                                        <button class="btn footer-send-btn">
+                                            Отправить заявку >
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<?php
+get_footer();
+?>
