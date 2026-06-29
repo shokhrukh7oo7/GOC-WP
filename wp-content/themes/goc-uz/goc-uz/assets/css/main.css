@@ -774,6 +774,7 @@ header {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  padding: 0;
 }
 .cell__arrow:hover {
   transform: scale(1.08);
@@ -781,8 +782,8 @@ header {
 }
 
 .cell__arrow img {
-  width: 14px;
-  height: 14px;
+  width: 25px;
+  height: 25px;
 }
 .cell__arrow:hover img {
   filter: brightness(1) invert(1);

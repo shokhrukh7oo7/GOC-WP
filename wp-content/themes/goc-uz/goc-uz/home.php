@@ -398,25 +398,52 @@ get_header();
         <div class="container">
             <div class="application-wrapper">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 03 - Применение</p>
+                    <p class="section-enter-header"><?= the_field('application-header'); ?></p>
 
                     <div class="section-enter-description">
                         <div class="section-enter-left">
-                            <h1>Оптика для любой среды.</h1>
+                            <h1><?= the_field('application-under-header'); ?></h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                От городской телеком-инфраструктуры до промышленных объектов
-                                в агрессивных средах. Подбираем кабель под параметры среды -
-                                не наоборот.
+                                <?= the_field('application-description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="application-left-wrapper">
-                    <div class="items">
+
+                    <?php if (have_rows('applications')): ?>
+                        <?php while (have_rows('applications')):
+                            the_row();
+                            $btn_text = get_sub_field('application-btn-text');
+                            $btn_image = get_sub_field('application-btn-image');
+                            $head = get_sub_field('application-head');
+                            $desc = get_sub_field('application-desc');
+                            ?>
+                            <div class="items">
+                                <div class="item-header">
+                                    <a href="#">
+                                        <?= esc_html($btn_text) ?>
+                                        <span>
+                                            <?php if ($btn_image): ?>
+                                                <img src="<?= esc_url($btn_image['url']); ?>"
+                                                    alt="<?= esc_attr($btn_image['alt']); ?>">
+                                            <?php endif; ?>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="item-body">
+                                    <h2><?= esc_html($head) ?></h2>
+                                    <p><?= esc_html($desc) ?></p>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+
+                    <!-- <div class="items">
                         <div class="item-header">
                             <a href="#">01 / 06
                                 <span>
@@ -510,7 +537,7 @@ get_header();
                             <h2>Телеком сети</h2>
                             <p>Магистральные линии, FTTx, последняя миля</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
