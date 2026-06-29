@@ -29,37 +29,65 @@
 			<div class="header-wrapper">
 				<div class="header-left">
 					<div class="logo-wrapper">
-						<a href="/index.html">
-							<img src="<?= get_template_directory_uri() ?> /assets/images/logo.png" alt="
-								logo" />
-						</a>
+						<?php
+						$logo = get_field('logo', 'option');
+						?>
+
+						<?php if ($logo): ?>
+							<a href="<?= esc_url(home_url('/')); ?>">
+								<img src="<?= esc_url($logo['url']); ?>" alt="<?= esc_attr($logo['alt']); ?>">
+							</a>
+						<?php endif; ?>
+
 					</div>
 				</div>
 
-				<div class="nav-link-wrapper">
-					<ul>
-						<li><a href="/index.html" class="active">О компании</a></li>
-						<li><a href="/assets/pages/solution.html">Решения</a></li>
-						<li><a href="/assets/pages/catalog.html">Каталог</a></li>
-						<li><a href="/assets/pages/news.html">Новости</a></li>
-						<li><a href="/assets/pages/gallery.html">Галерея</a></li>
-						<li><a href="/assets/pages/contact.html">Контакты</a></li>
-					</ul>
-				</div>
+				<div class="header-menu">
+					<div class="nav-link-wrapper">
+						<?php
+						wp_nav_menu(array(
+							'theme_location' => 'Main',
+							'container' => false,
+							'menu_class' => '',
+							'items_wrap' => '<ul>%3$s</ul>',
+							'fallback_cb' => false,
+						));
+						?>
+					</div>
 
-				<div class="header-right">
-					<div class="language-wrapper">
-						<ul>
-							<li><a href="#">RU</a></li>
-							<li><a href="#">UZ</a></li>
-							<li><a href="#">EN</a></li>
-						</ul>
-					</div>
-					<div class="call-wrapper">
-						<a href="tel:+998900000000">Позвонить</a>
-					</div>
-					<div class="request-wrapper">
-						<button class="btn btn-main">Заявка ></button>
+					<div class="header-right">
+						<div class="language-wrapper">
+							<?php
+							$languages = pll_the_languages(array(
+								'raw' => 1
+							));
+
+							if (!empty($languages)):
+								?>
+
+								<ul>
+									<?php foreach ($languages as $lang): ?>
+										<li>
+											<a href="<?= esc_url($lang['url']); ?>"
+												class="<?= $lang['current_lang'] ? 'active' : ''; ?>">
+												<?= strtoupper($lang['slug']); ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
+						</div>
+
+						<div class="call-wrapper">
+							<a href="tel:<?= the_field('phone_number', 'option'); ?>">
+								<?= the_field('left_btn_text', 'option'); ?>
+							</a>
+						</div>
+						<div class="request-wrapper">
+							<button class="btn btn-main">
+								<?= the_field('right_btn_text', 'option'); ?>
+							</button>
+						</div>
 					</div>
 				</div>
 

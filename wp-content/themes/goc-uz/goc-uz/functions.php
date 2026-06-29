@@ -50,7 +50,7 @@ function goc_uz_setup()
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__('Primary', 'goc-uz'),
+			'Main' => __('Главное меню', 'goc-uz'),
 		)
 	);
 
@@ -207,3 +207,31 @@ function fix_svg_mime_type($data, $file, $filename, $mimes)
 }
 add_filter('wp_check_filetype_and_ext', 'fix_svg_mime_type', 10, 4);
 // ------------------------------------------------------------------------
+// класс актив для меню
+function add_active_class_to_menu_link($atts, $item, $args)
+{
+	if (
+		in_array('current-menu-item', $item->classes) ||
+		in_array('current-menu-parent', $item->classes) ||
+		in_array('current-menu-ancestor', $item->classes)
+	) {
+		$atts['class'] = isset($atts['class'])
+			? $atts['class'] . ' active'
+			: 'active';
+	}
+
+	return $atts;
+}
+add_filter('nav_menu_link_attributes', 'add_active_class_to_menu_link', 10, 3);
+// ------------------------------------------------------------------------
+
+if (function_exists('acf_add_options_page')) {
+	acf_add_options_page(array(
+		'page_title' => 'Настройки шапки',
+		'menu_title' => 'Настройки шапки',
+		'menu_slug' => 'header-settings',
+		'capability' => 'edit_posts',
+		'redirect' => false,
+		'post_id' => 'option',
+	));
+}

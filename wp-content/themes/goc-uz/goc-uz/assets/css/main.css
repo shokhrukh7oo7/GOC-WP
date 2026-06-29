@@ -91,8 +91,17 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
   padding: 15px 0;
 }
+
+.header-wrapper .header-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .header-wrapper .header-left {
   display: flex;
   align-items: center;
@@ -146,6 +155,9 @@ header {
   font-weight: 400;
   line-height: 100%;
   color: var(--black-color);
+}
+.header-wrapper .header-right .language-wrapper ul li a.active {
+  font-weight: 700;
 }
 .header-wrapper .header-right .call-wrapper a {
   font-size: 13px;
@@ -255,9 +267,32 @@ header {
   flex-direction: column;
   gap: clamp(12px, 3vw, 57px);
   /* отступ под nav, который висит абсолютно сверху */
-  padding-top: clamp(40px, 6vw, 100px);
+  /* padding-top: clamp(40px, 6vw, 100px); */
+  padding-top: clamp(70px, 6vw, 100px);
 }
 
+.slide[data-theme="dark"] .headline h1,
+.slide[data-theme="dark"] .description .body-text,
+.slide[data-theme="dark"] .stat__label,
+.slide[data-theme="dark"] .stat__value,
+.slide[data-theme="dark"] .stat__unit,
+.slide[data-theme="dark"] .eyebrow {
+  color: var(--white-color) !important;
+}
+.slide[data-theme="dark"] .stats-bar {
+  border-color: var(--milk-color);
+}
+.slide[data-theme="light"] .headline h1,
+.slide[data-theme="light"] .description .body-text,
+.slide[data-theme="light"] .stat__label,
+.slide[data-theme="light"] .stat__value,
+.slide[data-theme="light"] .stat__unit,
+.slide[data-theme="light"] .eyebrow {
+  color: var(--black-color) !important;
+}
+.slide[data-theme="light"] .stats-bar {
+  border-color: var(--milk-color);
+}
 /* Nav — один элемент поверх всех слайдов */
 .slider .slider-nav {
   position: absolute;

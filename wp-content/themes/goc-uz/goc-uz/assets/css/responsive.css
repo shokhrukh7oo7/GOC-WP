@@ -274,7 +274,7 @@
   .header-wrapper .burger-btn {
     display: flex;
   }
-  .header-wrapper .nav-link-wrapper,
+  /* .header-wrapper .nav-link-wrapper,
   .header-wrapper .header-right {
     position: fixed;
     top: 66px;
@@ -290,7 +290,7 @@
     justify-content: flex-start;
     padding: 30px;
     gap: 30px;
-  }
+  } */
   .header-wrapper .nav-link-wrapper {
     height: auto;
     z-index: 1001;
@@ -309,6 +309,40 @@
   .header-wrapper .header-right {
     top: 340px;
     padding-top: 15px;
+  }
+  .header-wrapper .header-menu {
+    position: fixed;
+    top: 96px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 95px);
+    background: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 40px 20px;
+    transition: 0.35s;
+    z-index: 1000;
+  }
+
+  .header-wrapper .header-menu.active {
+    right: 0;
+  }
+
+  .header-wrapper .nav-link-wrapper ul {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .header-wrapper .header-right {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .header-wrapper .burger-btn {
+    display: flex;
   }
   body.no-scroll {
     overflow: hidden;

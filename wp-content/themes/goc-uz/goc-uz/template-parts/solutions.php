@@ -1,0 +1,642 @@
+<?php
+/*
+    Template name: Решение
+*/
+get_header();
+?>
+
+<main>
+    <!-- ready-made solutions -->
+    <section>
+        <div class="container">
+            <div class="extra-section ready-made-solutions-section">
+                <div class="layout-section">
+                    <div class="breadcrubs-wrapper">
+                        <a href="/index.html">Главная</a>
+                        <span>/ Готовые решения</span>
+                    </div>
+                    <p class="section-enter-header">№ 04 - Готовые решения</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Под ключ. <br />
+                                От ТЗ до приёмки.
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                Четыре направления, в которых GOC-UZ ведёт полный цикл - от
+                                проектирования и подбора SKU до монтажа, OTDR-приёмки и
+                                сервисного контракта. Команда из 38 инженеров, 6 бригад
+                                монтажа, гарантия 24 месяца.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rms-item-wrapper">
+                    <div class="item">
+                        <h6>Запущено</h6>
+                        <div class="content">
+                            <p>740 КМ</p>
+                            <span>за 2025 • по 4 направлениям</span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <h6>Текущие проекты</h6>
+                        <div class="content">
+                            <p>12</p>
+                            <span>в работе на 02.2026</span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <h6>Среднее ТЗ</h6>
+                        <div class="content">
+                            <p>10 дн.</p>
+                            <span>от заявки до КП</span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <h6>Бригады</h6>
+                        <div class="content">
+                            <p>6</p>
+                            <span>монтажных групп · РУз</span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <h6>Гарантия</h6>
+                        <div class="content">
+                            <p>24 мес.</p>
+                            <span>с SLA реагирования 4 ч</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- direction -->
+    <section>
+        <div class="container">
+            <div class="direction-section">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 04.01 - Направления</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Четыре <br />
+                                направления.
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                Каждое направление — отдельная команда инженеров, своя
+                                линейка SKU и отдельный регламент приёмки. Внутри
+                                направления возможна кастомизация под объект.
+                            </p>
+
+                            <div class="layout-extra-section-wrapper">
+                                <a href="#">
+                                    Запросить КП
+                                    <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="direction-item-wrapper">
+                    <div class="item">
+                        <div class="item-header">
+                            <span>01 / 04</span>
+                            <p>FTTX • Backbone</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="/assets/images/home/catalog/cat-1.png" alt="image" />
+                        </div>
+                        <div class="item-content">
+                            <h3>Сети связи операторов</h3>
+                            <p>
+                                Магистральные и распределительные ВОЛС для операторов
+                                фиксированной связи и мобильных сетей 4G/5G. Подвес,
+                                канализация, ввод в здание.
+                            </p>
+                            <div class="extra-content">
+                                <p><span>2-432 </span> волокон</p>
+                                <span>G.652.D</span>
+                                <p><span>740 км</span> сдано</p>
+                            </div>
+
+                            <a href="#" class="content-btn">
+                                Подробнее
+                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
+                                <span>OM-024 • OM-118 • OM-309</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span>02 / 04</span>
+                            <p>ЛЭП · OPGW</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="/assets/images/home/catalog/cat-3.png" alt="image" />
+                        </div>
+                        <div class="item-content">
+                            <h3>Энергетика и ЛЭП</h3>
+                            <p>
+                                Грозозащитные тросы OPGW и ADSS для линий 6–500 kV,
+                                подстанций и распределительных сетей энергетических
+                                компаний.
+                            </p>
+                            <div class="extra-content">
+                                <p><span>24-144 </span> волокон</p>
+                                <span>до 500 kV</span>
+                                <p><span>12</span> подстанций</p>
+                            </div>
+
+                            <a href="#" class="content-btn">
+                                Подробнее
+                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
+                                <span>OM-412 · OM-309</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span>03 / 04</span>
+                            <p>DC · Enterprise</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="/assets/images/home/catalog/cat-9.png" alt="image" />
+                        </div>
+                        <div class="item-content">
+                            <h3>Дата-центры и кампусы</h3>
+                            <p>
+                                Внутриобъектовая разводка MTP/MPO, OM4/OM5, LSZH- исполнение
+                                и распределительные коробки. Сертификация EN 50173.
+                            </p>
+                            <div class="extra-content">
+                                <p><span>12-576 </span> волокон</p>
+                                <span>OM3 / OM4 / OM5</span>
+                                <p><span>3 DC</span> сертиф.</p>
+                            </div>
+
+                            <a href="#" class="content-btn">
+                                Подробнее
+                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
+                                <span>OM-055 · OM-077</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span>04 / 04</span>
+                            <p>Industrial</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="/assets/images/home/catalog/cat-10.png" alt="image" />
+                        </div>
+                        <div class="item-content">
+                            <h3>Промышленность и ТЭК</h3>
+                            <p>
+                                Промышленные сети для нефтегаза, ГМК и транспорта.
+                                Бронированные кабели, огнестойкие исполнения, защита от
+                                грызунов.
+                            </p>
+                            <div class="extra-content">
+                                <p><span>2-96 </span> волокон</p>
+                                <span>FIRE-R · ARMOR</span>
+                                <p><span>−40…+90 °C</span></p>
+                            </div>
+
+                            <a href="#" class="content-btn">
+                                Подробнее
+                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
+                                <span>OM-041 · OM-118</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- process -->
+    <section class="process-container">
+        <div class="container">
+            <div class="process-wrapper">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 04.02 - Процесс</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Четыре шага <br />
+                                от ТЗ до акта
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                Регламент проекта одинаков для всех напралений. У вас -
+                                единый менеджер, единая отчётность, единый паспорт качества.
+                            </p>
+                        </div>
+                        <div class="layout-extra-section-wrapper">
+                            <p>Средний срок</p>
+                            <span>10-14 дней</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process-item-wrapper">
+                    <div class="item">
+                        <h1>01</h1>
+                        <span>Бриф и КП</span>
+                        <p>
+                            Запрос с объектом, длинами, средной прокладки. Подбираем SKU.
+                            формируем КП с ценами и сроками.
+                        </p>
+                        <span>1-2 дня</span>
+                    </div>
+
+                    <div class="item">
+                        <h1>02</h1>
+                        <span>Проект и согласование</span>
+                        <p>
+                            Подготовка рабочих чертежей, спецификация, согласование
+                            стандартов с заказчиком и контролирующими органами.
+                        </p>
+                        <span>3-5 дня</span>
+                    </div>
+
+                    <div class="item">
+                        <h1>03</h1>
+                        <span>Производство и логистика</span>
+                        <p>
+                            Заказ в производство на Factory N°1, OTDR- паспорт каждой
+                            катушки, доставка до объекта в РУз и СНГ.
+                        </p>
+                        <span>10-14 дня</span>
+                    </div>
+
+                    <div class="item">
+                        <h1>04</h1>
+                        <span>Монтаж и приёмка</span>
+                        <p>
+                            Монтаж силами 6 бригад, рефлектометрия 1310 / 1550 нм, паспорт
+                            объекта, акт скрытых работ, ввод в эксплуатацию.
+                        </p>
+                        <span>по графику</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- keys -->
+    <section class="keys-wrapper">
+        <div class="container">
+            <div class="keys-section">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 04.03 - Кейсы</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Реализованные <br />
+                                проекты.
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                Фрагмент портфеля 2022-2025. Полный реестр предоставляем по
+                                запросу и под NDA
+                            </p>
+
+                            <div class="layout-extra-section-wrapper">
+                                <a href="#">
+                                    Все кейсы
+                                    <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="keys-item-wrapper">
+                    <div class="keys-item">
+                        <p class="keys-date">2025 • Q4</p>
+                        <div class="keys-row">
+                            <h6>Магистраль Ташкент - Самарканд</h6>
+                            <span>Подвес ADSS · 4 этапа · ОТДР-приёмка</span>
+                        </div>
+
+                        <div class="keys-client">
+                            <span>Заказчик</span>
+                            <p>Uzbektelecom</p>
+                        </div>
+
+                        <p class="keys-row-length">316 <sub>km</sub></p>
+
+                        <a href="#">
+                            Подробнее
+                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                        </a>
+                    </div>
+
+                    <div class="keys-item">
+                        <p class="keys-date">2025 • Q3</p>
+                        <div class="keys-row">
+                            <h6>OPGW для линии 220 kV</h6>
+                            <span>Опоры ВЛ · грозозащита · 48 волокон</span>
+                        </div>
+
+                        <div class="keys-client">
+                            <span>Заказчик</span>
+                            <p>Узбекэнерго</p>
+                        </div>
+
+                        <p class="keys-row-length">142 <sub>km</sub></p>
+
+                        <a href="#">
+                            Подробнее
+                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                        </a>
+                    </div>
+
+                    <div class="keys-item">
+                        <p class="keys-date">2025 • Q2</p>
+                        <div class="keys-row">
+                            <h6>Дата-центр Tier III · Чирчик</h6>
+                            <span>MTP/MPO · OM4 · 8 машинных залов</span>
+                        </div>
+
+                        <div class="keys-client">
+                            <span>Заказчик</span>
+                            <p>Beeline UZ</p>
+                        </div>
+
+                        <p class="keys-row-length">38 <sub>km</sub></p>
+
+                        <a href="#">
+                            Подробнее
+                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                        </a>
+                    </div>
+
+                    <div class="keys-item">
+                        <p class="keys-date">2025 • Q2</p>
+                        <div class="keys-row">
+                            <h6>FTTH Намангана</h6>
+                            <span>Last mile · drop · 18 000 абонентов</span>
+                        </div>
+
+                        <div class="keys-client">
+                            <span>Заказчик</span>
+                            <p>UCell</p>
+                        </div>
+
+                        <p class="keys-row-length">274 <sub>km</sub></p>
+
+                        <a href="#">
+                            Подробнее
+                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                        </a>
+                    </div>
+
+                    <div class="keys-item">
+                        <p class="keys-date">2025 • Q4</p>
+                        <div class="keys-row">
+                            <h6>ВОЛС месторождения «Кокдумалак»</h6>
+                            <span>FIRE-R · ARMOR · −40…+90 °C</span>
+                        </div>
+
+                        <div class="keys-client">
+                            <span>Заказчик</span>
+                            <p>Узбекнефтегаз</p>
+                        </div>
+
+                        <p class="keys-row-length">86 <sub>km</sub></p>
+
+                        <a href="#">
+                            Подробнее
+                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                        </a>
+                    </div>
+
+                    <div class="keys-item">
+                        <p class="keys-date">2025 • Q3</p>
+                        <div class="keys-row">
+                            <h6>Метро Ташкент · Сергелийская линия</h6>
+                            <span>Тоннельный кабель · LSZH · FIRE-R</span>
+                        </div>
+
+                        <div class="keys-client">
+                            <span>Заказчик</span>
+                            <p>Тошшахартрансхизмат</p>
+                        </div>
+
+                        <p class="keys-row-length">21 <sub>km</sub></p>
+
+                        <a href="#">
+                            Подробнее
+                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- table -->
+    <section class="table-container">
+        <div class="container">
+            <div class="extra-section">
+                <div class="layout-section">
+                    <p class="section-enter-header">№ 04.04 - Сравнение</p>
+                    <div class="section-enter-description">
+                        <div class="section-enter-left">
+                            <h1>
+                                Что входит <br />
+                                в решение.
+                            </h1>
+                        </div>
+
+                        <div class="section-enter-right">
+                            <p>
+                                Три уровня вовлечения. Можем поставить только кабель - а
+                                можем вести проект от ТЗ до 5 лет сервиса.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table_component" role="region" tabindex="0">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Supply <br />
+                                    <span>только поставка</span>
+                                </th>
+                                <th>
+                                    Standard <br />
+                                    <span>поставка + монтаж</span>
+                                </th>
+                                <th>
+                                    Turnkey <br />
+                                    <span>под ключ • популярное</span>
+                                </th>
+                                <th>
+                                    Service <br />
+                                    <span>+ сервис 5 лет</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Подбор Sku</td>
+                                <td data-label="Supply (только поставка)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Standard (поставка + монтаж)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Turnkey (под ключ)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Кабель с OTDR-паспортом</td>
+                                <td data-label="Supply (только поставка)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Standard (поставка + монтаж)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Turnkey (под ключ)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Доставка до объекта</td>
+                                <td data-label="Supply (только поставка)"><b>опция</b></td>
+                                <td data-label="Standard (поставка + монтаж)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Turnkey (под ключ)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Проектирование</td>
+                                <td data-label="Supply (только поставка)">—</td>
+                                <td data-label="Standard (поставка + монтаж)">—</td>
+                                <td data-label="Turnkey (под ключ)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Монтаж бригадой GOC-UZ</td>
+                                <td data-label="Supply (только поставка)">—</td>
+                                <td data-label="Standard (поставка + монтаж)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Turnkey (под ключ)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Сдача с актом и паспортом</td>
+                                <td data-label="Supply (только поставка)">—</td>
+                                <td data-label="Standard (поставка + монтаж)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Turnkey (под ключ)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <img src="/assets/images/check.svg" alt="icon" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Гарантия</td>
+                                <td data-label="Supply (только поставка)">
+                                    <b>24 мес.</b>
+                                </td>
+                                <td data-label="Standard (поставка + монтаж)">
+                                    <b>24 мес.</b>
+                                </td>
+                                <td data-label="Turnkey (под ключ)"><b>36 мес.</b></td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <b>60 мес.</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SLA реагирования</td>
+                                <td data-label="Supply (только поставка)">—</td>
+                                <td data-label="Standard (поставка + монтаж)">
+                                    <b>24 ч</b>
+                                </td>
+                                <td data-label="Turnkey (под ключ)"><b>8 ч</b></td>
+                                <td data-label="Service (+ сервис 5 лет)">
+                                    <b>4 ч • 24/7</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- top footer -->
+    <section class="top-footer-container">
+        <div class="container">
+            <div class="top-footer-wrapper">
+                <div class="top-footer-left">
+                    <h1>Опишите задачу - мы соберем решение за 1 день.</h1>
+                    <p>
+                        Закрепленный менеджер. Подбор SKU, расчёт сроков, опционально
+                        визит на объект для замеров. Без обяъзательств.
+                    </p>
+                </div>
+
+                <div class="top-footer-right">
+                    <a href="#" class="give-btn">Получить КП ›</a>
+                    <a href="#" class="catalog-btn">К каталогу</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<?php
+get_footer();
+?>

@@ -1,30 +1,13 @@
 // ===================================== HEADER BURGER MENU ==================================================
 document.addEventListener("DOMContentLoaded", () => {
-  const burgerBtn = document.querySelector(".burger-btn");
-  const navMenu = document.querySelector(".nav-link-wrapper");
-  const rightMenu = document.querySelector(".header-right");
-
-  burgerBtn.addEventListener("click", () => {
-    burgerBtn.classList.toggle("active");
-    navMenu.classList.toggle("active");
-    rightMenu.classList.toggle("active");
+  const burger = document.querySelector(".burger-btn");
+  const menu = document.querySelector(".header-menu");
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    menu.classList.toggle("active");
     document.body.classList.toggle("no-scroll");
   });
-
-  document
-    .querySelectorAll(
-      ".header-wrapper a, .header-wrapper button:not(.burger-btn)",
-    )
-    .forEach((el) => {
-      el.addEventListener("click", () => {
-        burgerBtn.classList.remove("active");
-        navMenu.classList.remove("active");
-        rightMenu.classList.remove("active");
-        document.body.classList.remove("no-scroll");
-      });
-    });
 });
-
 // ===================================== SLIDER ==================================================
 (() => {
   // Находим слайдер. Если его нет — сразу выходим из функции и не ломаем скрипт!

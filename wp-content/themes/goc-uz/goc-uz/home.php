@@ -8,7 +8,127 @@ get_header();
 <main>
     <!-- SLIDER -->
     <section class="slider" id="slider" aria-label="Слайдер — главный экран">
-        <!-- Единый nav поверх всех слайдов -->
+        <?php if (have_rows('home_slider')):
+            $slides = get_field('home_slider');
+            $total_slides = count($slides);
+            ?>
+            <div class="container">
+                <nav class="slider-nav" aria-label="Навигация слайдера">
+                    <button class="nav-arrow" id="prev" aria-label="Предыдущий слайд">
+                        <img src="<?= get_template_directory_uri() ?>/assets/images/home/arrow-left.svg" alt="" />
+                    </button>
+
+                    <div class="nav-dots" id="dots" role="tablist" aria-label="Слайды">
+                        <?php for ($i = 0; $i < $total_slides; $i++): ?>
+                            <button class="nav-dot <?= $i === 0 ? 'active' : ''; ?>" role="tab"
+                                aria-selected="<?= $i === 0 ? 'true' : 'false'; ?>" aria-label="Слайд <?= $i + 1 ?>"
+                                data-index="<?= $i ?>"></button>
+                        <?php endfor; ?>
+                    </div>
+
+                    <button class="nav-arrow" id="next" aria-label="Следующий слайд">
+                        <img src="<?= get_template_directory_uri() ?>/assets/images/home/arrow-right.svg" alt="" />
+                    </button>
+                </nav>
+            </div>
+
+            <?php
+            $slide_index = 0;
+            while (have_rows('home_slider')):
+                the_row();
+                $theme = get_sub_field('slide_theme') ?: 'dark';
+                $video_url = get_sub_field('slide_video');
+                $title = get_sub_field('slide_title');
+                $eyebrow = get_sub_field('slide_eyebrow');
+                $desc = get_sub_field('slide_desc');
+
+                $btn_1_text = get_sub_field('btn_1_text');
+                $btn_1_url = get_sub_field('btn_1_url');
+                $btn_2_text = get_sub_field('btn_2_text');
+                $btn_2_url = get_sub_field('btn_2_url');
+
+                $is_active = ($slide_index === 0);
+                ?>
+                <div class="slide <?= $is_active ? 'active' : ''; ?>" data-theme="<?= esc_attr($theme); ?>" role="group"
+                    aria-label="Слайд <?= $slide_index + 1 ?> из <?= $total_slides ?>">
+
+                    <?php if ($video_url): ?>
+                        <div class="slide__video-wrap">
+                            <video autoplay muted loop playsinline>
+                                <source src="<?= esc_url($video_url); ?>" type="video/mp4" />
+                            </video>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="container">
+                        <div class="slide__content">
+                            <?php if ($title): ?>
+                                <div class="headline">
+                                    <h1><?= wp_kses_post($title); ?></h1>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="description">
+
+                                <?php if ($eyebrow): ?>
+                                    <p class="eyebrow"><?= esc_html($eyebrow); ?></p>
+                                <?php endif; ?>
+
+                                <?php if ($desc): ?>
+                                    <p class="body-text"><?= esc_html($desc); ?></p>
+                                <?php endif; ?>
+
+                                <?php if (($btn_1_text && $btn_1_url) || ($btn_2_text && $btn_2_url)): ?>
+                                    <div class="cta-row">
+                                        <?php if ($btn_1_text && $btn_1_url): ?>
+                                            <a href="<?= esc_url($btn_1_url); ?>" class="btn btn--primary">
+                                                <?= esc_html($btn_1_text); ?>
+                                                <span class="btn-arrow" aria-hidden="true"></span>
+                                            </a>
+                                        <?php endif; ?>
+
+                                        <?php if ($btn_2_text && $btn_2_url): ?>
+                                            <a href="<?= esc_url($btn_2_url); ?>" class="btn btn--outline">
+                                                <?= esc_html($btn_2_text); ?>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php if (have_rows('slide_stats')): ?>
+                        <div class="container">
+                            <div class="stats-bar" aria-label="Ключевые показатели">
+                                <?php while (have_rows('slide_stats')):
+                                    the_row();
+                                    $stat_label = get_sub_field('stat_label');
+                                    $stat_value = get_sub_field('stat_value');
+                                    $stat_unit = get_sub_field('stat_unit');
+                                    ?>
+                                    <div class="stat">
+                                        <p class="stat__label"><?= esc_html($stat_label); ?></p>
+                                        <p class="stat__value"><?= esc_html($stat_value); ?></p>
+                                        <p class="stat__unit"><?= esc_html($stat_unit); ?></p>
+                                    </div>
+                                <?php endwhile; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+                <?php
+                $slide_index++;
+            endwhile;
+            ?>
+
+        <?php else: ?>
+            <p style="text-align:center; padding: 50px;">Пожалуйста, добавьте слайды в панели управления.</p>
+        <?php endif; ?>
+    </section>
+
+    <!-- <section class="slider" id="slider" aria-label="Слайдер — главный экран">
         <div class="container">
             <nav class="slider-nav" aria-label="Навигация слайдера">
                 <button class="nav-arrow" id="prev" aria-label="Предыдущий слайд">
@@ -28,7 +148,6 @@ get_header();
             </nav>
         </div>
 
-        <!-- Slide 1 -->
         <div class="slide active" data-theme="dark" role="group" aria-label="Слайд 1 из 3">
             <div class="slide__video-wrap">
                 <video autoplay muted loop playsinline>
@@ -83,7 +202,6 @@ get_header();
             </div>
         </div>
 
-        <!-- Slide 2 -->
         <div class="slide" data-theme="light" role="group" aria-label="Слайд 2 из 3">
             <div class="slide__video-wrap">
                 <video autoplay muted loop playsinline>
@@ -138,7 +256,6 @@ get_header();
             </div>
         </div>
 
-        <!-- Slide 3 -->
         <div class="slide" data-theme="dark" role="group" aria-label="Слайд 3 из 3">
             <div class="slide__video-wrap">
                 <video autoplay muted loop playsinline>
@@ -192,58 +309,84 @@ get_header();
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- ABOUT -->
     <section>
         <div class="container">
             <div class="about-wrapper">
                 <div class="about-left">
-                    <p>Factory • Tashkent</p>
-                    <img src="<?= get_template_directory_uri() ?> /assets/images/home/banner-left.png" alt="image" />
+                    <p><?= the_field('left-photo-text'); ?></p>
+                    <?php
+                    $leftPhoto = get_field('left-image');
+                    if ($leftPhoto): ?>
+                        <img src="<?= esc_url($leftPhoto['url']); ?>" alt="<?= esc_attr($leftPhoto['alt']); ?>">
+                    <?php endif; ?>
                 </div>
 
                 <div class="about-right">
                     <div class="about-right-top">
-                        <span>№02 - О компании</span>
-                        <h1>Узбекско-корейское предприятие.</h1>
+                        <span><?= the_field('content-header'); ?></span>
+                        <h1><?= the_field('content-under-header'); ?></h1>
                         <p>
-                            Компания GOC-UZ является совместным предприятием Узбекистана и
-                            Южной Кореи, которая была основана 2019 году с целью развития
-                            современной кабельной и телекоммуникационной инфраструктуры в
-                            Узбекистане. С момента своего основания компания ориентируется
-                            на внедрение передовых технологий, соответствие международным
-                            стандартам и создание продукции высокого качества.
+                            <?= the_field('content-desc'); ?>
                         </p>
-                        <a href="#">Подробнее »</a>
+                        <a href="#"><?= the_field('left-btn-text'); ?></a>
                     </div>
 
                     <div class="about-right-center">
                         <div class="about-sertificate-wrapper">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/sertificate.jpg"
-                                alt="images" />
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/sertificate.jpg"
-                                alt="images" />
+
+                            <?php if (have_rows('sertificates')): ?>
+                                <?php while (have_rows('sertificates')):
+                                    the_row();
+                                    $image = get_sub_field('sertificate-image');
+                                    ?>
+                                    <img src="<?= esc_url($image['url']); ?>" alt="<?= esc_attr($image['alt']); ?>">
+                                <?php endwhile; ?>
+                            <?php endif; ?>
                         </div>
                         <p>
-                            Два завода. Пятнадцать производственных площадок. Один контур
-                            качества.
+                            <?= the_field('sertificate-text'); ?>
                         </p>
                     </div>
 
                     <div class="about-right-bottom">
-                        <div class="factory-wrapper">
-                            <div class="factory-item">
-                                <span>Factory № 1</span>
-                                <h6>120 000<span> км/год</span></h6>
-                                <p>Внутренная установка • 6 площадок</p>
+                        <?php if (have_rows('factory')): ?>
+                            <div class="factory-wrapper">
+                                <?php while (have_rows('factory')):
+                                    the_row();
+                                    $name = get_sub_field('factory_name');
+                                    $value = get_sub_field('factory_value');
+                                    $unit = get_sub_field('factory_unit');
+                                    $description = get_sub_field('factory_description');
+                                    ?>
+                                    <div class="factory-item">
+                                        <?php if ($name): ?>
+                                            <span>
+                                                <?= esc_html($name); ?>
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php if ($value): ?>
+                                            <h6>
+                                                <?= esc_html($value); ?>
+
+                                                <?php if ($unit): ?>
+                                                    <span>
+                                                        <?= esc_html($unit); ?>
+                                                    </span>
+                                                <?php endif; ?>
+                                            </h6>
+                                        <?php endif; ?>
+                                        <?php if ($description): ?>
+                                            <p>
+                                                <?= esc_html($description); ?>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endwhile; ?>
                             </div>
-                            <div class="factory-item">
-                                <span>Factory № 2</span>
-                                <h6>24 000<span> км/год</span></h6>
-                                <p>Наружная установка • 9 площадок</p>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
