@@ -1013,6 +1013,7 @@ header {
   width: 100%;
   padding: 4px 0;
   transition: color 0.2s;
+  border-color: transparent !important;
 }
 
 .row-input::placeholder {
