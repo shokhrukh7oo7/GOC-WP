@@ -381,3 +381,28 @@ if (function_exists('acf_add_options_page')) {
 		'post_id' => 'option',
 	));
 }
+// ------------------------------------------------------------------------
+// НАПРАВЛЕНИЯ (CPT)
+function register_direction_cpt()
+{
+    register_post_type('direction', [
+        'labels' => [
+            'name' => 'Направления',
+            'singular_name' => 'Направление',
+        ],
+        'public' => true,
+        'has_archive' => true,
+        'rewrite' => [
+            'slug' => 'direction'
+        ],
+        'menu_icon' => 'dashicons-networking',
+        'supports' => [
+            'title',
+            'editor',
+            'thumbnail'
+        ],
+        'show_in_rest' => true,
+    ]);
+}
+
+add_action('init', 'register_direction_cpt');

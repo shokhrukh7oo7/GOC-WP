@@ -13,66 +13,42 @@ get_header();
                 <div class="layout-section">
                     <?php goc_breadcrumbs(); ?>
 
-                    <p class="section-enter-header">№ 04 - Готовые решения</p>
+                    <p class="section-enter-header"><?= the_field('solution-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Под ключ. <br />
-                                От ТЗ до приёмки.
+                                <?= the_field('solution-under-header'); ?>
+                                <br>
+                                <?= the_field('solution-extra-text'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Четыре направления, в которых GOC-UZ ведёт полный цикл - от
-                                проектирования и подбора SKU до монтажа, OTDR-приёмки и
-                                сервисного контракта. Команда из 38 инженеров, 6 бригад
-                                монтажа, гарантия 24 месяца.
+                                <?= the_field('solution-description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="rms-item-wrapper">
-                    <div class="item">
-                        <h6>Запущено</h6>
-                        <div class="content">
-                            <p>740 КМ</p>
-                            <span>за 2025 • по 4 направлениям</span>
-                        </div>
-                    </div>
 
-                    <div class="item">
-                        <h6>Текущие проекты</h6>
-                        <div class="content">
-                            <p>12</p>
-                            <span>в работе на 02.2026</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <h6>Среднее ТЗ</h6>
-                        <div class="content">
-                            <p>10 дн.</p>
-                            <span>от заявки до КП</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <h6>Бригады</h6>
-                        <div class="content">
-                            <p>6</p>
-                            <span>монтажных групп · РУз</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <h6>Гарантия</h6>
-                        <div class="content">
-                            <p>24 мес.</p>
-                            <span>с SLA реагирования 4 ч</span>
-                        </div>
-                    </div>
+                    <?php if (have_rows('rms-item')): ?>
+                        <?php while (have_rows('rms-item')):
+                            the_row();
+                            $head = get_sub_field('rms-header');
+                            $span = get_sub_field('rms-span');
+                            $desc = get_sub_field('rms-desc');
+                            ?>
+                            <div class="item">
+                                <h6><?= esc_html($head); ?></h6>
+                                <div class="content">
+                                    <p><?= esc_html($span); ?></p>
+                                    <span><?= esc_html($desc); ?></span>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -83,26 +59,26 @@ get_header();
         <div class="container">
             <div class="direction-section">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 04.01 - Направления</p>
+                    <p class="section-enter-header"><?= the_field('direction-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Четыре <br />
-                                направления.
+                                <?= the_field('direction-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Каждое направление — отдельная команда инженеров, своя
-                                линейка SKU и отдельный регламент приёмки. Внутри
-                                направления возможна кастомизация под объект.
+                                <?= the_field('direction-description'); ?>
                             </p>
 
                             <div class="layout-extra-section-wrapper">
                                 <a href="#">
-                                    Запросить КП
-                                    <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                                    <?= the_field('direction-btn-text'); ?>
+                                    <?php
+                                    $icon = get_field('direction-btn-image');
+                                    ?>
+                                    <img src="<?= esc_url($icon['url']); ?>" alt="<?= esc_attr($icon['alt']); ?>" />
                                 </a>
                             </div>
                         </div>
@@ -110,120 +86,83 @@ get_header();
                 </div>
 
                 <div class="direction-item-wrapper">
-                    <div class="item">
-                        <div class="item-header">
-                            <span>01 / 04</span>
-                            <p>FTTX • Backbone</p>
-                        </div>
-                        <div class="item-image">
-                            <img src="/assets/images/home/catalog/cat-1.png" alt="image" />
-                        </div>
-                        <div class="item-content">
-                            <h3>Сети связи операторов</h3>
-                            <p>
-                                Магистральные и распределительные ВОЛС для операторов
-                                фиксированной связи и мобильных сетей 4G/5G. Подвес,
-                                канализация, ввод в здание.
-                            </p>
-                            <div class="extra-content">
-                                <p><span>2-432 </span> волокон</p>
-                                <span>G.652.D</span>
-                                <p><span>740 км</span> сдано</p>
+
+                    <?php
+
+                    $query = new WP_Query([
+                        'post_type' => 'direction',
+                        'posts_per_page' => -1,
+                    ]);
+
+                    $total = $query->post_count;
+                    $count = 1;
+
+                    if ($query->have_posts()):
+
+                        while ($query->have_posts()):
+
+                            $query->the_post();
+
+                            $small = get_field('direction_small_title');
+                            $fibers = get_field('direction_fibers');
+                            $standard = get_field('direction_standard');
+                            $stat = get_field('direction_stat');
+                            $textBtn = get_field('direction-btn-text');
+                            $models = get_field('direction_models');
+
+                            ?>
+
+                            <div class="item">
+                                <div class="item-header">
+                                    <span>
+                                        <?= sprintf('%02d', $count); ?>
+                                        /
+                                        <?= sprintf('%02d', $total); ?>
+                                    </span>
+                                    <p>
+                                        <?= esc_html($small); ?>
+                                    </p>
+                                </div>
+                                <div class="item-image">
+                                    <?php the_post_thumbnail('large'); ?>
+                                </div>
+
+                                <div class="item-content">
+                                    <h3>
+                                        <?php the_title(); ?>
+                                    </h3>
+                                    <p>
+                                        <?= wp_trim_words(get_the_content(), 20); ?>
+                                    </p>
+                                    <div class="extra-content">
+                                        <p>
+                                            <span>
+                                                <?= esc_html($fibers); ?>
+                                            </span>
+                                        </p>
+                                        <span>
+                                            <?= esc_html($standard); ?>
+                                        </span>
+                                        <p>
+                                            <span>
+                                                <?= esc_html($stat); ?>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <a href="<?php the_permalink(); ?>" class="content-btn">
+                                        <?= esc_html($textBtn); ?>
+                                        <span>
+                                            <?= esc_html($models); ?>
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
-
-                            <a href="#" class="content-btn">
-                                Подробнее
-                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
-                                <span>OM-024 • OM-118 • OM-309</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-header">
-                            <span>02 / 04</span>
-                            <p>ЛЭП · OPGW</p>
-                        </div>
-                        <div class="item-image">
-                            <img src="/assets/images/home/catalog/cat-3.png" alt="image" />
-                        </div>
-                        <div class="item-content">
-                            <h3>Энергетика и ЛЭП</h3>
-                            <p>
-                                Грозозащитные тросы OPGW и ADSS для линий 6–500 kV,
-                                подстанций и распределительных сетей энергетических
-                                компаний.
-                            </p>
-                            <div class="extra-content">
-                                <p><span>24-144 </span> волокон</p>
-                                <span>до 500 kV</span>
-                                <p><span>12</span> подстанций</p>
-                            </div>
-
-                            <a href="#" class="content-btn">
-                                Подробнее
-                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
-                                <span>OM-412 · OM-309</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-header">
-                            <span>03 / 04</span>
-                            <p>DC · Enterprise</p>
-                        </div>
-                        <div class="item-image">
-                            <img src="/assets/images/home/catalog/cat-9.png" alt="image" />
-                        </div>
-                        <div class="item-content">
-                            <h3>Дата-центры и кампусы</h3>
-                            <p>
-                                Внутриобъектовая разводка MTP/MPO, OM4/OM5, LSZH- исполнение
-                                и распределительные коробки. Сертификация EN 50173.
-                            </p>
-                            <div class="extra-content">
-                                <p><span>12-576 </span> волокон</p>
-                                <span>OM3 / OM4 / OM5</span>
-                                <p><span>3 DC</span> сертиф.</p>
-                            </div>
-
-                            <a href="#" class="content-btn">
-                                Подробнее
-                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
-                                <span>OM-055 · OM-077</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-header">
-                            <span>04 / 04</span>
-                            <p>Industrial</p>
-                        </div>
-                        <div class="item-image">
-                            <img src="/assets/images/home/catalog/cat-10.png" alt="image" />
-                        </div>
-                        <div class="item-content">
-                            <h3>Промышленность и ТЭК</h3>
-                            <p>
-                                Промышленные сети для нефтегаза, ГМК и транспорта.
-                                Бронированные кабели, огнестойкие исполнения, защита от
-                                грызунов.
-                            </p>
-                            <div class="extra-content">
-                                <p><span>2-96 </span> волокон</p>
-                                <span>FIRE-R · ARMOR</span>
-                                <p><span>−40…+90 °C</span></p>
-                            </div>
-
-                            <a href="#" class="content-btn">
-                                Подробнее
-                                <!-- <img src="/assets/images/home/arrow-top.svg" alt="image"> -->
-                                <span>OM-041 · OM-118</span>
-                            </a>
-                        </div>
-                    </div>
+                            <?php
+                            $count++;
+                        endwhile;
+                        wp_reset_postdata();
+                    endif;
+                    ?>
                 </div>
             </div>
         </div>
