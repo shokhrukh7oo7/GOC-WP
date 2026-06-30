@@ -633,15 +633,14 @@ get_header();
                 <div class="configurator">
                     <!-- LEFT -->
                     <div class="left">
-                        <p class="eyebrow">№ 05 — Конфигуратор</p>
-                        <h1 class="headline">Подберите кабель под ваш проект.</h1>
+                        <p class="eyebrow"><?= the_field('configurator-header'); ?></p>
+                        <h1 class="headline"><?= the_field('configurator-under-header'); ?></h1>
                         <p class="subtitle">
-                            Три параметра — и вы получите артикул, конструкцию и цену. Без
-                            звонка менеджеру.
+                            <?= the_field('configurator-description'); ?>
                         </p>
-                        <p class="divider-label">или</p>
+                        <p class="divider-label"><?= the_field('configurator-extra-text'); ?></p>
                         <p class="tz-link">
-                            отправьте нам ТЗ — подберём вручную, ответ за 1 час.
+                            <?= the_field('configurator-extra-text-2'); ?>
                         </p>
                     </div>
 
@@ -967,94 +966,55 @@ get_header();
         <div class="container">
             <div class="catalog-wrapper reason-container">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 07 - Почему GOC-UZ</p>
+                    <p class="section-enter-header">
+                        <?= the_field('reason-header'); ?>
+                    </p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Четыре причины, <br />
-                                по которым нас <br />
-                                выбирают.
+                                <?= the_field('reason-under-header'); ?>
                             </h1>
                         </div>
                     </div>
                 </div>
 
                 <div class="reason-items-wrapper">
-                    <div class="item">
-                        <div class="date-wrapper">
-                            <p>01 / 04</p>
-                        </div>
 
-                        <div class="content">
-                            <h5>Собственное производство</h5>
-                            <p>
-                                Два завода 15 производственных площадок. Полный цикл от
-                                превормы до готового кабеля.
-                            </p>
-                        </div>
-                    </div>
+                    <?php if (have_rows('reason-items')): ?>
+                        <?php while (have_rows('reason-items')):
+                            the_row();
+                            $header = get_sub_field('reason-item-header');
+                            $under_header = get_sub_field('reason-item-under-header');
+                            $description = get_sub_field('reason-item-description');
+                            ?>
+                            <div class="item">
+                                <div class="data-wrapper">
+                                    <p><?= esc_html($header); ?></p>
+                                </div>
 
-                    <div class="item">
-                        <div class="date-wrapper">
-                            <p>02 / 04</p>
-                        </div>
-
-                        <div class="content">
-                            <h5>Быстрая логистика</h5>
-                            <p>
-                                КП за 1 час. Отгрузка со склада в Ташкенте и Сеуле. Доставка
-                                по СНГ и ЦА
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="date-wrapper">
-                            <p>03 / 04</p>
-                        </div>
-
-                        <div class="content">
-                            <h5>Гибкость под задачи</h5>
-                            <p>
-                                Небольшая партии, нестандартные длины, индивидуальная
-                                маркировка и оболочка.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="date-wrapper">
-                            <p>04 / 04</p>
-                        </div>
-
-                        <div class="content">
-                            <h5>Контроль качества</h5>
-                            <p>
-                                OTDR-тестирование каждой барабанной катушк. ISO 9001, IEC
-                                60794. ГОСТ Р.
-                            </p>
-                        </div>
-                    </div>
+                                <div class="content">
+                                    <h5><?= esc_html($under_header); ?></h5>
+                                    <p><?= esc_html($description); ?></p>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
 
                 <div class="reason-partner-wrapper">
-                    <h3>Нам доверяют</h3>
+                    <h3><?= the_field('partner-header'); ?></h3>
                     <div class="partner-items-wrapper">
-                        <div class="item">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
-                        </div>
-                        <div class="item">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
-                        </div>
-                        <div class="item">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
-                        </div>
-                        <div class="item">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
-                        </div>
-                        <div class="item">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/p-1.png" alt="image" />
-                        </div>
+
+                        <?php if (have_rows('partners')): ?>
+                            <?php while (have_rows('partners')):
+                                the_row();
+                                $image = get_sub_field('partner-image');
+                                ?>
+                                <div class="item">
+                                    <img src="<?= esc_url($image['url']); ?>" alt="<?= esc_attr($image['alt']); ?>">
+                                </div>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

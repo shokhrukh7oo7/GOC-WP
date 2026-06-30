@@ -570,3 +570,4 @@ document.querySelectorAll(".variant-btn").forEach((btn) => {
       price.toLocaleString("ru-RU");
   });
 });
+// =============================================================
