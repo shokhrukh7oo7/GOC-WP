@@ -173,68 +173,44 @@ get_header();
         <div class="container">
             <div class="process-wrapper">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 04.02 - Процесс</p>
+                    <p class="section-enter-header"><?= the_field('process-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Четыре шага <br />
-                                от ТЗ до акта
+                                <?= the_field('process-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Регламент проекта одинаков для всех напралений. У вас -
-                                единый менеджер, единая отчётность, единый паспорт качества.
+                                <?= the_field('process-description'); ?>
                             </p>
                         </div>
                         <div class="layout-extra-section-wrapper">
-                            <p>Средний срок</p>
-                            <span>10-14 дней</span>
+                            <p><?= the_field('process-extra-text'); ?></p>
+                            <span><?= the_field('process-extra-text-2'); ?></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="process-item-wrapper">
-                    <div class="item">
-                        <h1>01</h1>
-                        <span>Бриф и КП</span>
-                        <p>
-                            Запрос с объектом, длинами, средной прокладки. Подбираем SKU.
-                            формируем КП с ценами и сроками.
-                        </p>
-                        <span>1-2 дня</span>
-                    </div>
 
-                    <div class="item">
-                        <h1>02</h1>
-                        <span>Проект и согласование</span>
-                        <p>
-                            Подготовка рабочих чертежей, спецификация, согласование
-                            стандартов с заказчиком и контролирующими органами.
-                        </p>
-                        <span>3-5 дня</span>
-                    </div>
-
-                    <div class="item">
-                        <h1>03</h1>
-                        <span>Производство и логистика</span>
-                        <p>
-                            Заказ в производство на Factory N°1, OTDR- паспорт каждой
-                            катушки, доставка до объекта в РУз и СНГ.
-                        </p>
-                        <span>10-14 дня</span>
-                    </div>
-
-                    <div class="item">
-                        <h1>04</h1>
-                        <span>Монтаж и приёмка</span>
-                        <p>
-                            Монтаж силами 6 бригад, рефлектометрия 1310 / 1550 нм, паспорт
-                            объекта, акт скрытых работ, ввод в эксплуатацию.
-                        </p>
-                        <span>по графику</span>
-                    </div>
+                    <?php if (have_rows('process')): ?>
+                        <?php while (have_rows('process')):
+                            the_row();
+                            $number = get_sub_field('process-number');
+                            $head = get_sub_field('process-head');
+                            $desc = get_sub_field('process-desc');
+                            $deadline = get_sub_field('process-deadline');
+                            ?>
+                            <div class="item">
+                                <h1><?= esc_html($number); ?></h1>
+                                <span><?= esc_html($head); ?></span>
+                                <p><?= esc_html($desc); ?></p>
+                                <span><?= esc_html($deadline); ?></span>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

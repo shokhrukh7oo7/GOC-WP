@@ -1928,7 +1928,8 @@ header {
   color: var(--white-color);
   margin-bottom: 0;
   width: 100%;
-  max-width: 100%;
+  /* max-width: 100%; */
+ max-width: 400px;
 }
 .process-wrapper
   .layout-section
@@ -1936,6 +1937,7 @@ header {
   .section-enter-right
   p {
   max-width: 500px;
+  color: var(--white-color);
 }
 .process-wrapper .section-enter-description .layout-extra-section-wrapper p {
   font-size: 11px;
