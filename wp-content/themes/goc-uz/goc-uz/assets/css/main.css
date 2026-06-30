@@ -1496,7 +1496,8 @@ header {
   .item {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
+  align-items: start;
   gap: clamp(20px, 3vw, 40px);
   border-top: 1px solid rgba(255, 255, 255, 0.35);
   padding: clamp(10px, 1.5vw, 20px) 0;
@@ -1524,6 +1525,7 @@ header {
   text-transform: uppercase;
   color: var(--white-color);
   width: 25%;
+  padding-top: 10px;
 }
 
 .footer-request-wrapper
@@ -1548,6 +1550,49 @@ header {
   form
   .item
   input:focus {
+  border: none;
+  outline: none;
+}
+.footer-request-wrapper
+  .section-enter-description
+  .section-enter-right
+  .form-wrapper
+  form
+  .item
+  span {
+  width: 100%;
+}
+.footer-request-wrapper
+  .section-enter-description
+  .section-enter-right
+  .form-wrapper
+  form
+  .item
+  .wpcf7-spinner {
+  width: auto;
+}
+.footer-request-wrapper
+  .section-enter-description
+  .section-enter-right
+  .form-wrapper
+  form
+  .item
+  textarea {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+}
+.footer-request-wrapper
+  .section-enter-description
+  .section-enter-right
+  .form-wrapper
+  form
+  .item
+  textarea:focus {
   border: none;
   outline: none;
 }

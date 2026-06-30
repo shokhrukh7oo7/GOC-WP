@@ -224,6 +224,9 @@ function add_active_class_to_menu_link($atts, $item, $args)
 }
 add_filter('nav_menu_link_attributes', 'add_active_class_to_menu_link', 10, 3);
 // ------------------------------------------------------------------------
+// отключить автоматические <p> - contact form 7
+add_filter('wpcf7_autop_or_not', '__return_false');
+// ------------------------------------------------------------------------
 
 if (function_exists('acf_add_options_page')) {
 	acf_add_options_page(array(

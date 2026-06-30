@@ -1026,44 +1026,35 @@ get_header();
         <div class="container">
             <div class="catalog-wrapper">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 08 - Связаться</p>
+                    <p class="section-enter-header"><?= the_field('contact-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Оставьте <br />
-                                заявку. <br />
-                                <span>Ответим за 1 час.</span>
+                                <?= the_field('contact-under-header'); ?>
+                                <span><?= the_field('contact-extra-text'); ?></span>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <div class="form-wrapper">
-                                <form>
-                                    <div class="item">
-                                        <label class="field-label" for="name">Имя</label>
-                                        <input class="field-input" id="name" type="text"
-                                            placeholder="Как к вам обращаться" />
-                                    </div>
-                                    <div class="item">
-                                        <label class="field-label" for="phone">Телефон</label>
-                                        <input class="field-input" id="phone" type="tel"
-                                            placeholder="+998 __ ___ __ __" />
-                                    </div>
-                                    <div class="item">
-                                        <label class="field-label" for="comment">Комментарий</label>
-                                        <input class="field-input" id="comment" type="text"
-                                            placeholder="Коротко опишите проект" />
-                                    </div>
-                                    <div class="item">
-                                        <p>
-                                            Нажимая "Отправить", вы соглашаетесь с политикой
-                                            обработки персональным данных.
-                                        </p>
-                                        <button class="btn footer-send-btn">
-                                            Отправить заявку >
-                                        </button>
-                                    </div>
-                                </form>
+                                <!-- <?php echo do_shortcode('[contact-form-7 id="fcad419" title="Оставить заявку"]'); ?> -->
+
+                                <?php
+                                $lang = pll_current_language();
+
+                                switch ($lang) {
+                                    case 'ru':
+                                        echo do_shortcode('[contact-form-7 id="fcad419" title="Оставить заявку"]');
+                                        break;
+
+                                    case 'uz':
+                                        echo do_shortcode('[contact-form-7 id="b8d1f43" title="Ariza qoldirish"]');
+                                        break;
+
+                                    case 'en':
+                                        echo do_shortcode('[contact-form-7 id="35a8e41" title="Send request"]');
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

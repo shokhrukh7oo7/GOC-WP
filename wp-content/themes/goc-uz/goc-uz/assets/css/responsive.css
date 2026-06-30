@@ -1196,6 +1196,15 @@
     .form-wrapper
     form
     .item
+    textarea {
+    text-align: center;
+  }
+  .footer-request-wrapper
+    .section-enter-description
+    .section-enter-right
+    .form-wrapper
+    form
+    .item
     input {
     width: 100%;
     text-align: center;
