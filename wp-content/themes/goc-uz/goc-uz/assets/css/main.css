@@ -867,6 +867,22 @@ header {
 .cell:nth-child(3) {
   border-right: 1px solid var(--aqua-color);
 }
+
+/* .cell:nth-child(4n + 1) {
+  grid-column: span 3;
+}
+
+.cell:nth-child(4n + 2) {
+  grid-column: span 2;
+}
+
+.cell:nth-child(4n + 3) {
+  grid-column: span 2;
+}
+
+.cell:nth-child(4n + 4) {
+  grid-column: span 3;
+} */
 /* solutions section end */
 
 /* configuration section start */

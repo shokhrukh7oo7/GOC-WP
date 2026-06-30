@@ -548,100 +548,79 @@ get_header();
         <div class="container">
             <div class="application-wrapper">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 04 - Готовые решение</p>
+                    <p class="section-enter-header"><?= the_field('solution-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Решения <br />
-                                под задачи
+                                <?= the_field('solution-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Четыре категории, покрывающие 94% запросов клиентов. Для
-                                каждой - предопределённые конструкции, сроки, цуна.
+                                <?= the_field('solution-description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="solutions">
-                    <!-- 01 Drop Cable — light -->
-                    <div class="cell cell--light">
-                        <span class="cell__label">№01 — Solution</span>
-                        <button class="cell__arrow" aria-label="Подробнее">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
-                                alt="image" />
-                        </button>
-                        <img class="cell__img"
-                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-1.png"
-                            alt="Дроп-кабель" />
-                        <div class="cell__text">
-                            <h2 class="cell__title">Дроп-кабель</h2>
-                            <p class="cell__desc">
-                                Компактный drop-кабель до абонента. Быстрая разделка, низкая
-                                масса на километр.
-                            </p>
-                        </div>
-                    </div>
+                    <?php if (have_rows('solutions')): ?>
+                        <?php
+                        $index = 1;
+                        while (have_rows('solutions')):
+                            the_row();
+                            $theme = get_sub_field('solution_theme') ?: 'light';
+                            $image = get_sub_field('solution_image');
+                            $index_text = get_sub_field('solution_index');
+                            $index_btn_image = get_sub_field('solution_btn_image');
+                            $title = get_sub_field('solution_title');
+                            $description = get_sub_field('solution_description');
+                            $link = get_sub_field('solution_link');
+                            ?>
+                            <div class="cell cell--<?= esc_attr($theme); ?>">
+                                <span class="cell__label">
+                                    №<?= sprintf('%02d', $index); ?> — <?= esc_html($index_text); ?>
+                                </span>
+                                <?php if (!empty($link)): ?>
+                                    <a class="cell__arrow" href="<?= esc_url($link['url']); ?>"
+                                        target="<?= esc_attr($link['target'] ?: '_self'); ?>"
+                                        aria-label="<?= esc_attr($link['title']); ?>">
 
-                    <!-- 02 Aerial single-mode — dark -->
-                    <div class="cell cell--dark">
-                        <span class="cell__label">№02 — Solution</span>
-                        <button class="cell__arrow" aria-label="Подробнее">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
-                                alt="image" />
-                        </button>
-                        <img class="cell__img"
-                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-2.png"
-                            alt="Воздушный одномодовый кабель" />
-                        <div class="cell__text">
-                            <h2 class="cell__title">Воздушный одномодовый кабель</h2>
-                            <p class="cell__desc">
-                                Дальнобойная одномодовая оптика — защищённая, маслостойкая,
-                                пригодная для траншеи и подвеса.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 03 Indoor networks — light -->
-                    <div class="cell cell--light">
-                        <span class="cell__label">№03 — Solution</span>
-                        <button class="cell__arrow" aria-label="Подробнее">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
-                                alt="image" />
-                        </button>
-                        <img class="cell__img"
-                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-3.png"
-                            alt="Внутренние сети" />
-                        <div class="cell__text">
-                            <h2 class="cell__title">Внутренние сети</h2>
-                            <p class="cell__desc">
-                                LSZH-оболочка для монтажа в зданиях. Пассивные огнестойкие
-                                исполнения CORD.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 04 Industrial — light -->
-                    <div class="cell cell--light">
-                        <span class="cell__label">№04 — Solution</span>
-                        <button class="cell__arrow" aria-label="Подробнее">
-                            <img src="<?= get_template_directory_uri() ?> /assets/images/home/arrow-right.svg"
-                                alt="image" />
-                        </button>
-                        <img class="cell__img"
-                            src="<?= get_template_directory_uri() ?> /assets/images/home/solution-4.png"
-                            alt="Промышленные объекты" />
-                        <div class="cell__text">
-                            <h2 class="cell__title">Промышленные объекты</h2>
-                            <p class="cell__desc">
-                                Армированная конструкция для агрессивных сред, вибрации и
-                                механических нагрузок.
-                            </p>
-                        </div>
-                    </div>
+                                        <?php if ($index_btn_image): ?>
+                                            <img src="<?= esc_url($index_btn_image['url']); ?>"
+                                                alt="<?= esc_attr($index_btn_image['alt']); ?>">
+                                        <?php endif; ?>
+                                    </a>
+                                <?php else: ?>
+                                    <div class="cell__arrow">
+                                        <?php if ($index_btn_image): ?>
+                                            <img src="<?= esc_url($index_btn_image['url']); ?>"
+                                                alt="<?= esc_attr($index_btn_image['alt']); ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($image): ?>
+                                    <img class="cell__img" src="<?= esc_url($image['url']); ?>"
+                                        alt="<?= esc_attr($image['alt']); ?>">
+                                <?php endif; ?>
+                                <div class="cell__text">
+                                    <?php if ($title): ?>
+                                        <h2 class="cell__title">
+                                            <?= esc_html($title); ?>
+                                        </h2>
+                                    <?php endif; ?>
+                                    <?php if ($description): ?>
+                                        <p class="cell__desc">
+                                            <?= esc_html($description); ?>
+                                        </p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <?php
+                            $index++;
+                        endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
