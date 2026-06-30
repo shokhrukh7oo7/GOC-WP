@@ -221,25 +221,26 @@ get_header();
         <div class="container">
             <div class="keys-section">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 04.03 - Кейсы</p>
+                    <p class="section-enter-header"><?= the_field('keys-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Реализованные <br />
-                                проекты.
+                                <?= the_field('keys-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Фрагмент портфеля 2022-2025. Полный реестр предоставляем по
-                                запросу и под NDA
+                                <?= the_field('keys-description'); ?>
                             </p>
 
                             <div class="layout-extra-section-wrapper">
                                 <a href="#">
-                                    Все кейсы
-                                    <img src="/assets/images/home/arrow-top.svg" alt="icon" />
+                                    <?= the_field('keys-btn-text'); ?>
+                                    <?php
+                                    $icon = get_field('keys-btn-icon');
+                                    ?>
+                                    <img src="<?= esc_url($icon['url']); ?>" alt="<?= esc_attr($icon['alt']); ?>" />
                                 </a>
                             </div>
                         </div>
