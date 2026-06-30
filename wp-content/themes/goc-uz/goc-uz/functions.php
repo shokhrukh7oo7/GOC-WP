@@ -188,6 +188,149 @@ if (defined('JETPACK__VERSION')) {
 }
 
 // ------------------------------------------------------------------------
+// универсальная функция для breadcrumbs
+function goc_get_home_title()
+{
+	if (function_exists('pll_current_language')) {
+
+		switch (pll_current_language()) {
+
+			case 'ru':
+				return 'Главная';
+
+			case 'uz':
+				return 'Bosh sahifa';
+
+			case 'en':
+				return 'Home';
+		}
+	}
+	return __('Home');
+}
+function goc_breadcrumbs()
+{
+	if (is_front_page()) {
+		return;
+	}
+	global $post;
+	echo '<nav class="breadcrumbs-wrapper" aria-label="Breadcrumb">';
+	echo '<ol itemscope itemtype="https://schema.org/BreadcrumbList">';
+	$position = 1;
+	// Главная
+	echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+	echo '<a itemprop="item" href="' . esc_url(home_url('/')) . '">';
+	echo '<span itemprop="name">' . esc_html(goc_get_home_title()) . '</span>';
+	echo '</a>';
+	echo '<meta itemprop="position" content="' . $position . '">';
+	echo '</li>';
+	$position++;
+	/*
+	---------------------------------------
+	PAGE
+	---------------------------------------
+	*/
+	if (is_page()) {
+		$parents = array_reverse(get_post_ancestors($post));
+		foreach ($parents as $parent) {
+			echo '<li>/</li>';
+			echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+			echo '<a itemprop="item" href="' . get_permalink($parent) . '">';
+			echo '<span itemprop="name">' . get_the_title($parent) . '</span>';
+			echo '</a>';
+			echo '<meta itemprop="position" content="' . $position++ . '">';
+			echo '</li>';
+		}
+		echo '<li>/</li>';
+		echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+		echo '<span itemprop="name">' . get_the_title() . '</span>';
+		echo '<meta itemprop="position" content="' . $position . '">';
+		echo '</li>';
+	}
+	/*
+	---------------------------------------
+	SINGLE
+	---------------------------------------
+	*/ elseif (is_singular()) {
+		$post_type = get_post_type();
+		// обычные записи
+		if ($post_type == 'post') {
+			$cats = get_the_category();
+			if (!empty($cats)) {
+				echo '<li>/</li>';
+				echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+				echo '<a itemprop="item" href="' . get_category_link($cats[0]->term_id) . '">';
+				echo '<span itemprop="name">' . $cats[0]->name . '</span>';
+				echo '</a>';
+				echo '<meta itemprop="position" content="' . $position++ . '">';
+				echo '</li>';
+			}
+		}
+		// Любой CPT
+		else {
+			$object = get_post_type_object($post_type);
+			if ($object && $object->has_archive) {
+				echo '<li>/</li>';
+				echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+				echo '<a itemprop="item" href="' . get_post_type_archive_link($post_type) . '">';
+				echo '<span itemprop="name">' . $object->labels->name . '</span>';
+				echo '</a>';
+				echo '<meta itemprop="position" content="' . $position++ . '">';
+				echo '</li>';
+			}
+			// Любая таксономия CPT
+			$taxonomies = get_object_taxonomies($post_type);
+			foreach ($taxonomies as $taxonomy) {
+				$terms = get_the_terms(get_the_ID(), $taxonomy);
+				if ($terms && !is_wp_error($terms)) {
+					$term = array_shift($terms);
+					echo '<li>/</li>';
+					echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+					echo '<a itemprop="item" href="' . get_term_link($term) . '">';
+					echo '<span itemprop="name">' . $term->name . '</span>';
+					echo '</a>';
+					echo '<meta itemprop="position" content="' . $position++ . '">';
+					echo '</li>';
+					break;
+				}
+			}
+		}
+		echo '<li>/</li>';
+		echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+		echo '<span itemprop="name">' . get_the_title() . '</span>';
+		echo '<meta itemprop="position" content="' . $position . '">';
+		echo '</li>';
+	}
+	/*
+	---------------------------------------
+	ARCHIVES
+	---------------------------------------
+	*/ elseif (is_post_type_archive()) {
+		echo '<li>/</li><li>';
+		post_type_archive_title();
+		echo '</li>';
+	} elseif (is_category()) {
+		echo '<li>/</li><li>';
+		single_cat_title();
+		echo '</li>';
+	} elseif (is_tax()) {
+		echo '<li>/</li><li>';
+		single_term_title();
+		echo '</li>';
+	} elseif (is_tag()) {
+		echo '<li>/</li><li>';
+		single_tag_title();
+		echo '</li>';
+	} elseif (is_search()) {
+		echo '<li>/</li><li>';
+		echo get_search_query();
+		echo '</li>';
+	} elseif (is_404()) {
+		echo '<li>/</li><li>404</li>';
+	}
+	echo '</ol>';
+	echo '</nav>';
+}
+// ------------------------------------------------------------------------
 // Разрешить загрузку SVG
 function allow_svg_upload($mimes)
 {

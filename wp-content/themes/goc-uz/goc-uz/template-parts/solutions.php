@@ -11,10 +11,8 @@ get_header();
         <div class="container">
             <div class="extra-section ready-made-solutions-section">
                 <div class="layout-section">
-                    <div class="breadcrubs-wrapper">
-                        <a href="/index.html">Главная</a>
-                        <span>/ Готовые решения</span>
-                    </div>
+                    <?php goc_breadcrumbs(); ?>
+
                     <p class="section-enter-header">№ 04 - Готовые решения</p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
