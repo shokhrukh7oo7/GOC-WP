@@ -11,98 +11,80 @@ get_header();
             <div class="extra-section ready-made-solutions-section">
                 <div class="layout-section">
                     <?php goc_breadcrumbs(); ?>
-                    
-                    <p class="section-enter-header">№ 04 - Галерея</p>
+
+                    <p class="section-enter-header"><? the_field('gallery-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Заводы. <br />
-                                объекты <br />
-                                люди.
+                                <?= the_field('gallery-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Фотографии и видео с производства, монтажа на объектах и
-                                команды GOC-UZ. Снято собственным отделом и приглашёнными
-                                фотографами. Все материалы доступны для прессы.
+                                <?= the_field('gallery-description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="rms-item-wrapper">
-                    <div class="item">
-                        <h6>Фотографий</h6>
-                        <div class="content">
-                            <p>412</p>
-                            <span>в открытом доступе</span>
-                        </div>
-                    </div>
 
-                    <div class="item">
-                        <h6>Видеороликов</h6>
-                        <div class="content">
-                            <p>38</p>
-                            <span>с производства и объектов</span>
-                        </div>
-                    </div>
+                    <?php if (have_rows('rms-item')): ?>
 
-                    <div class="item">
-                        <h6>3D-туров</h6>
-                        <div class="content">
-                            <p>4</p>
-                            <span>по заводам и DC</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <h6>Дронъ-съёмок</h6>
-                        <div class="content">
-                            <p>21</p>
-                            <span>объект с воздуха</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <h6>Пресс-кит</h6>
-                        <div class="content">
-                            <p>12.</p>
-                            <span>материалов · 280 MB</span>
-                        </div>
-                    </div>
+                        <?php while (have_rows('rms-item')):
+                            the_row(); ?>
+                            <div class="item">
+                                <h6>
+                                    <?= get_sub_field('rms-header'); ?>
+                                </h6>
+                                <div class="content">
+                                    <p>
+                                        <?= get_sub_field('rms-span'); ?>
+                                    </p>
+                                    <span>
+                                        <?= get_sub_field('rms-desc'); ?>
+                                    </span>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </section>
+
 
     <section>
         <div class="container">
             <div class="gallery-container">
                 <header class="gallery-header">
                     <nav class="gallery-nav">
+                        <?php
+                        $categories = get_terms([
+                            'taxonomy' => 'gallery_category',
+                            'hide_empty' => false,
+                        ]);
+
+                        $total_count = wp_count_posts('gallery')->publish;
+                        ?>
+
                         <button class="tab-btn active" data-filter="all">
-                            Все <span>452</span>
+                            Все <span><?php echo $total_count; ?></span>
                         </button>
-                        <button class="tab-btn" data-filter="production">
-                            Производство <span>142</span>
-                        </button>
-                        <button class="tab-btn" data-filter="objects">
-                            Объекты <span>98</span>
-                        </button>
-                        <button class="tab-btn" data-filter="team">
-                            Команда <span>64</span>
-                        </button>
-                        <button class="tab-btn" data-filter="products">
-                            Продукция <span>76</span>
-                        </button>
-                        <button class="tab-btn" data-filter="video">
-                            Видео <span>50</span>
-                        </button>
-                        <button class="tab-btn" data-filter="tours">
-                            3D-туры <span>4</span>
-                        </button>
+
+                        <?php
+                        if (!empty($categories) && !is_wp_error($categories)):
+                            foreach ($categories as $cat):
+                                $filter_slug = ($cat->slug === 'video' || mb_strtolower($cat->name) === 'видео') ? 'video' : $cat->slug;
+                                ?>
+                                <button class="tab-btn" data-filter="<?php echo esc_attr($filter_slug); ?>">
+                                    <?php echo esc_html($cat->name); ?> <span><?php echo $cat->count; ?></span>
+                                </button>
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
                     </nav>
                     <div class="gallery-extra-links">
                         <p class="extra-link">Вид</p>
@@ -111,73 +93,71 @@ get_header();
                 </header>
 
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-category="production">
-                        <div class="item-inner">
-                            <span class="item-badge">Производство</span>
-                            <img src="/assets/images/home/catalog/cat-1.png" alt="Кабель" />
-                        </div>
-                    </div>
+                    <?php
+                    $gallery_query = new WP_Query([
+                        'post_type' => 'gallery',
+                        'posts_per_page' => -1,
+                        'post_status' => 'publish'
+                    ]);
 
-                    <div class="gallery-item" data-category="objects">
-                        <div class="item-inner">
-                            <span class="item-badge">Объект</span>
-                            <img src="/assets/images/home/catalog/cat-3.png" alt="Кабель" />
-                        </div>
-                    </div>
+                    if ($gallery_query->have_posts()):
+                        while ($gallery_query->have_posts()):
+                            $gallery_query->the_post();
 
-                    <div class="gallery-item" data-category="products">
-                        <div class="item-inner">
-                            <span class="item-badge">Продукция</span>
-                            <img src="/assets/images/home/catalog/cat-10.png" alt="Кабель" />
-                        </div>
-                    </div>
+                            $terms = get_the_terms(get_the_ID(), 'gallery_category');
+                            $cat_slug = !empty($terms) ? $terms[0]->slug : '';
+                            $cat_name = !empty($terms) ? $terms[0]->name : '';
 
-                    <div class="gallery-item" data-category="video">
-                        <div class="item-inner has-video" onclick="playInlineVideo(this)">
-                            <span class="item-badge">Видео • 1:32</span>
-                            <div class="video-indicator"></div>
+                            $is_video = get_field('is_video');
+                            $video_duration = get_field('video_duration');
 
-                            <img src="/assets/images/home/catalog/cat-9.png" alt="Превью" class="video-poster" />
+                            $video_field_data = get_field('video_file');
+                            $video_url = '';
+                            if (is_array($video_field_data)) {
+                                $video_url = $video_field_data['url'];
+                            } elseif (is_numeric($video_field_data)) {
+                                $video_url = wp_get_attachment_url($video_field_data);
+                            } else {
+                                $video_url = $video_field_data;
+                            }
 
-                            <video class="gallery-video inline-player" autoplay loop muted playsinline>
-                                <source src="/assets/slide-3.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
+                            $img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
 
-                    <div class="gallery-item" data-category="products">
-                        <div class="item-inner">
-                            <span class="item-badge">Продукция</span>
-                            <img src="/assets/images/home/catalog/cat-10.png" alt="Кабель" />
-                        </div>
-                    </div>
+                            if (!$img_url) {
+                                $img_url = '/assets/images/home/catalog/cat-1.png';
+                            }
+                            ?>
+                            <?php
+                            $final_category = $is_video ? 'video' : $cat_slug;
+                            ?>
+                            <div class="gallery-item" data-category="<?php echo esc_attr($final_category); ?>">
 
-                    <div class="gallery-item" data-category="video">
-                        <div class="item-inner has-video" onclick="playInlineVideo(this)">
-                            <span class="item-badge">Видео • 1:32</span>
-                            <div class="video-indicator"></div>
+                                <?php if ($is_video): ?>
+                                    <div class="item-inner has-video" onclick="playInlineVideo(this)">
+                                        <span class="item-badge">Видео • <?php echo esc_html($video_duration); ?></span>
+                                        <div class="video-indicator"></div>
 
-                            <img src="/assets/images/home/catalog/cat-2.png" alt="Превью" class="video-poster" />
+                                        <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>"
+                                            class="video-poster" />
 
-                            <video class="gallery-video inline-player" autoplay loop muted playsinline>
-                                <source src="/assets/slide-1.mp4" type="video/mp4" />
-                            </video>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" data-category="production">
-                        <div class="item-inner">
-                            <span class="item-badge">Производство</span>
-                            <img src="/assets/images/home/catalog/cat-1.png" alt="Кабель" />
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" data-category="production">
-                        <div class="item-inner">
-                            <span class="item-badge">Производство</span>
-                            <img src="/assets/images/home/catalog/cat-6.png" alt="Кабель" />
-                        </div>
-                    </div>
+                                        <video class="gallery-video inline-player" autoplay loop muted playsinline>
+                                            <source src="<?php echo esc_url($video_url); ?>" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="item-inner">
+                                        <span class="item-badge"><?php echo esc_html($cat_name); ?></span>
+                                        <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    else:
+                        echo '<p>Элементов галереи пока не добавлено.</p>';
+                    endif;
+                    ?>
                 </div>
             </div>
         </div>

@@ -385,24 +385,71 @@ if (function_exists('acf_add_options_page')) {
 // НАПРАВЛЕНИЯ (CPT)
 function register_direction_cpt()
 {
-    register_post_type('direction', [
-        'labels' => [
-            'name' => 'Направления',
-            'singular_name' => 'Направление',
-        ],
-        'public' => true,
-        'has_archive' => true,
-        'rewrite' => [
-            'slug' => 'direction'
-        ],
-        'menu_icon' => 'dashicons-networking',
-        'supports' => [
-            'title',
-            'editor',
-            'thumbnail'
-        ],
-        'show_in_rest' => true,
-    ]);
+	register_post_type('direction', [
+		'labels' => [
+			'name' => 'Направления',
+			'singular_name' => 'Направление',
+		],
+		'public' => true,
+		'has_archive' => true,
+		'rewrite' => [
+			'slug' => 'direction'
+		],
+		'menu_icon' => 'dashicons-networking',
+		'supports' => [
+			'title',
+			'editor',
+			'thumbnail'
+		],
+		'show_in_rest' => true,
+	]);
 }
 
 add_action('init', 'register_direction_cpt');
+// ------------------------------------------------------------------------
+// ГАЛЕРЕЯ ТАБ (CPT)
+function register_gallery_custom_post_type()
+{
+	// Регистрация таксономии (Категорий галереи)
+	register_taxonomy('gallery_category', 'gallery', [
+		'labels' => [
+			'name' => 'Категории галереи',
+			'singular_name' => 'Категория',
+			'search_items' => 'Искать категории',
+			'all_items' => 'Все категории',
+			'edit_item' => 'Редактировать категорию',
+			'update_item' => 'Обновить категорию',
+			'add_new_item' => 'Добавить новую категорию',
+			'new_item_name' => 'Название новой категории',
+			'menu_name' => 'Категории',
+		],
+		'hierarchical' => true,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => ['slug' => 'gallery-cat'],
+	]);
+
+	// Регистрация самого типа записей
+	register_post_type('gallery', [
+		'labels' => [
+			'name' => 'Галерея',
+			'singular_name' => 'Элемент галереи',
+			'add_new' => 'Добавить элемент',
+			'add_new_item' => 'Добавить новый элемент галереи',
+			'edit_item' => 'Редактировать элемент',
+			'new_item' => 'Новый элемент',
+			'view_item' => 'Посмотреть элемент',
+			'search_items' => 'Искать в галерее',
+			'not_found' => 'Элементов не найдено',
+			'parent_item_colon' => '',
+			'menu_name' => 'Галерея'
+		],
+		'public' => true,
+		'has_archive' => false,
+		'supports' => ['title', 'thumbnail'], // Используем миниатюру для фото
+		'taxonomies' => ['gallery_category'],
+		'menu_icon' => 'dashicons-format-gallery',
+	]);
+}
+add_action('init', 'register_gallery_custom_post_type');
