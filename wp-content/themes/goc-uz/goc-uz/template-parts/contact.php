@@ -91,19 +91,19 @@ get_header();
                             </p>
 
                             <!-- Tabs -->
-                            <div class="tabs" role="tablist">
-                                <button class="tab active" role="tab" aria-selected="true" onclick="selectTab(this)">
+                            <div class="c-items">
+                                <div class="c-item active">
                                     <span class="tab-title">КП на кабель</span>
                                     <span class="tab-sub">подбор SKU + цена</span>
-                                </button>
-                                <button class="tab" role="tab" aria-selected="false" onclick="selectTab(this)">
+                                </div>
+                                <div class="c-item">
                                     <span class="tab-title">Решение под ключ</span>
                                     <span class="tab-sub">проект + монтаж</span>
-                                </button>
-                                <button class="tab" role="tab" aria-selected="false" onclick="selectTab(this)">
+                                </div>
+                                <div class="c-item">
                                     <span class="tab-title">Стать партнёром</span>
                                     <span class="tab-sub">дилерство · OEM</span>
-                                </button>
+                                </div>
                             </div>
 
                             <!-- Form -->
@@ -178,103 +178,64 @@ get_header();
                     </div>
 
                     <div class="contact-form-wrapper-right">
-                        <h3>Менеджеры по направлениям</h3>
+                        <h3><?= the_field('form-right-header'); ?></h3>
                         <div class="item-wrapper">
-                            <div class="item">
-                                <div class="item-left">
-                                    <p>Операторы · FTTx · backbone</p>
-                                    <span>Магистральные сети, last mile, агрегация</span>
-                                </div>
 
-                                <div class="item-center">
-                                    <p>operators@goc-uz.com</p>
-                                </div>
-
-                                <div class="item-right">
-                                    <p>вн. 201</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="item-left">
-                                    <p>Энергетика · OPGW · ADSS</p>
-                                    <span>Грозозащитные тросы, подстанции, ЛЭП</span>
-                                </div>
-
-                                <div class="item-center">
-                                    <p>energy@goc-uz.com</p>
-                                </div>
-
-                                <div class="item-right">
-                                    <p>вн. 204</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="item-left">
-                                    <p>Дата-центры и кампусы</p>
-                                    <span>MTP/MPO, OM3/4/5, корпоративная разводка</span>
-                                </div>
-
-                                <div class="item-center">
-                                    <p>dc@goc-uz.com</p>
-                                </div>
-
-                                <div class="item-right">
-                                    <p>вн. 207</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="item-left">
-                                    <p>Промышленность · нефтегаз</p>
-                                    <span>FIRE-R, ARMOR, спец. исполнения</span>
-                                </div>
-
-                                <div class="item-center">
-                                    <p>industrial@goc-uz.com</p>
-                                </div>
-
-                                <div class="item-right">
-                                    <p>вн. 211</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="item-left">
-                                    <p>Партнёрство · дилерство</p>
-                                    <span>OEM, реселлеры, СНГ и ЦА</span>
-                                </div>
-
-                                <div class="item-center">
-                                    <p>partners@goc-uz.com</p>
-                                </div>
-
-                                <div class="item-right">
-                                    <p>вн. 240</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="item-left">
-                                    <p>Пресс-служба</p>
-                                    <span>Интервью, комментарии, пресс-кит</span>
-                                </div>
-
-                                <div class="item-center">
-                                    <p>press@goc-uz.com</p>
-                                </div>
-
-                                <div class="item-right">
-                                    <p>вн. 110</p>
-                                </div>
-                            </div>
+                            <?php if (have_rows('form-right-items')): ?>
+                                <?php while (have_rows('form-right-items')):
+                                    the_row();
+                                    $head = get_sub_field('header');
+                                    $desc = get_sub_field('description');
+                                    $title = get_sub_field('title');
+                                    $value = get_sub_field('value');
+                                    ?>
+                                    <div class="item">
+                                        <div class="item-left">
+                                            <p><?= esc_html($head); ?></p>
+                                            <span><?= esc_html($desc); ?></span>
+                                        </div>
+                                        <div class="item-center">
+                                            <p><?= esc_html($title); ?></p>
+                                        </div>
+                                        <div class="item-right">
+                                            <p>
+                                                <?= esc_html($value); ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
                         </div>
 
                         <div class="contact-user-info-wrapper">
-                            <div class="contact-user-info">
+
+                            <?php if (have_rows('user-info')): ?>
+                                <?php while (have_rows('user-info')):
+                                    the_row();
+                                    $u_h_name = get_sub_field('header-name');
+                                    $u_name = get_sub_field('name');
+                                    $u_job = get_sub_field('job');
+                                    $u_account = get_sub_field('account');
+                                    $u_phone = get_sub_field('phone');
+                                    ?>
+                                    <div class="contact-user-info">
+                                        <div class="user-cicle">
+                                            <span><?= esc_html($u_h_name); ?></span>
+                                        </div>
+
+                                        <div class="user-info">
+                                            <h6><?= esc_html($u_name); ?></h6>
+                                            <span><?= esc_html($u_job); ?></span>
+                                            <p><?= esc_html($u_account); ?></p>
+                                            <p><?= esc_html($u_phone); ?></p>
+                                        </div>
+                                    </div>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+
+                            <!-- <div class="contact-user-info">
                                 <div class="user-cicle">
-                                    <span>БК</span>
+                                    <span>БK</span>
                                 </div>
 
                                 <div class="user-info">
@@ -296,7 +257,7 @@ get_header();
                                     <p>@i_lebedev</p>
                                     <p>+998 90 140 02 40</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

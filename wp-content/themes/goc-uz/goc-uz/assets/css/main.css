@@ -4569,15 +4569,14 @@ header {
   color: rgba(255, 255, 255, 0.65);
 }
 
-.contact-form-container .contact-form-wrapper-left .form-section .tabs {
+.contact-form-container .contact-form-wrapper-left .form-section .c-items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
-.contact-form-container .contact-form-wrapper-left .form-section .tabs .tab {
+.contact-form-container .contact-form-wrapper-left .form-section .c-items .c-item {
   padding: clamp(10px, 1vw, 16px) 10px;
-  cursor: pointer;
   border: 1px solid var(--milk-color);
   background: var(--surface);
   color: rgba(255, 255, 255, 0.6);
@@ -4591,8 +4590,8 @@ header {
 .contact-form-container
   .contact-form-wrapper-left
   .form-section
-  .tabs
-  .tab
+  .c-items
+  .c-item
   .tab-title {
   display: block;
   color: rgba(255, 255, 255, 0.6);
@@ -4603,8 +4602,8 @@ header {
 .contact-form-container
   .contact-form-wrapper-left
   .form-section
-  .tabs
-  .tab
+  .c-items
+  .c-item
   .tab-sub {
   display: block;
   font-size: 11px;
@@ -4615,8 +4614,8 @@ header {
 .contact-form-container
   .contact-form-wrapper-left
   .form-section
-  .tabs
-  .tab.active {
+  .c-items
+  .c-item.active {
   background: var(--aqua-color);
   color: var(--black-color);
   border-color: var(--aqua-color);
@@ -4625,16 +4624,16 @@ header {
 .contact-form-container
   .contact-form-wrapper-left
   .form-section
-  .tabs
-  .tab.active
+  .c-items
+  .c-item.active
   .tab-title {
   color: var(--black-color);
 }
 .contact-form-container
   .contact-form-wrapper-left
   .form-section
-  .tabs
-  .tab.active
+  .c-items
+  .c-item.active
   .tab-sub {
   color: var(--black-color);
 }
@@ -4871,6 +4870,7 @@ header {
   background-color: var(--white-color);
   padding: clamp(14px, 1.5vw, 24px);
   margin: clamp(20px, 3vw, 48px) 0;
+  gap: 10px;
 }
 .contact-user-info-wrapper .contact-user-info {
   display: flex;

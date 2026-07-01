@@ -448,14 +448,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 // ================== contact (form tabs) =======================
-function selectTab(el) {
-  document.querySelectorAll(".tab").forEach((t) => {
-    t.classList.remove("active");
-    t.setAttribute("aria-selected", "false");
-  });
-  el.classList.add("active");
-  el.setAttribute("aria-selected", "true");
-}
+// function selectTab(el) {
+//   document.querySelectorAll(".tab").forEach((t) => {
+//     t.classList.remove("active");
+//     t.setAttribute("aria-selected", "false");
+//   });
+//   el.classList.add("active");
+//   el.setAttribute("aria-selected", "true");
+// }
 // ================== map (tabs) =======================
 const offices = [
   {
