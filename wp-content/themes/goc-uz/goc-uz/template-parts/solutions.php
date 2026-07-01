@@ -297,154 +297,76 @@ get_header();
         <div class="container">
             <div class="extra-section">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 04.04 - Сравнение</p>
+                    <p class="section-enter-header"><?= the_field('comparison-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Что входит <br />
-                                в решение.
+                                <?= the_field('comparison-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Три уровня вовлечения. Можем поставить только кабель - а
-                                можем вести проект от ТЗ до 5 лет сервиса.
+                                <?= the_field('comparison-description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="table_component" role="region" tabindex="0">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>
-                                    Supply <br />
-                                    <span>только поставка</span>
-                                </th>
-                                <th>
-                                    Standard <br />
-                                    <span>поставка + монтаж</span>
-                                </th>
-                                <th>
-                                    Turnkey <br />
-                                    <span>под ключ • популярное</span>
-                                </th>
-                                <th>
-                                    Service <br />
-                                    <span>+ сервис 5 лет</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Подбор Sku</td>
-                                <td data-label="Supply (только поставка)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Standard (поставка + монтаж)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Turnkey (под ключ)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Кабель с OTDR-паспортом</td>
-                                <td data-label="Supply (только поставка)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Standard (поставка + монтаж)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Turnkey (под ключ)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Доставка до объекта</td>
-                                <td data-label="Supply (только поставка)"><b>опция</b></td>
-                                <td data-label="Standard (поставка + монтаж)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Turnkey (под ключ)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Проектирование</td>
-                                <td data-label="Supply (только поставка)">—</td>
-                                <td data-label="Standard (поставка + монтаж)">—</td>
-                                <td data-label="Turnkey (под ключ)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Монтаж бригадой GOC-UZ</td>
-                                <td data-label="Supply (только поставка)">—</td>
-                                <td data-label="Standard (поставка + монтаж)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Turnkey (под ключ)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Сдача с актом и паспортом</td>
-                                <td data-label="Supply (только поставка)">—</td>
-                                <td data-label="Standard (поставка + монтаж)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Turnkey (под ключ)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <img src="/assets/images/check.svg" alt="icon" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Гарантия</td>
-                                <td data-label="Supply (только поставка)">
-                                    <b>24 мес.</b>
-                                </td>
-                                <td data-label="Standard (поставка + монтаж)">
-                                    <b>24 мес.</b>
-                                </td>
-                                <td data-label="Turnkey (под ключ)"><b>36 мес.</b></td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <b>60 мес.</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>SLA реагирования</td>
-                                <td data-label="Supply (только поставка)">—</td>
-                                <td data-label="Standard (поставка + монтаж)">
-                                    <b>24 ч</b>
-                                </td>
-                                <td data-label="Turnkey (под ключ)"><b>8 ч</b></td>
-                                <td data-label="Service (+ сервис 5 лет)">
-                                    <b>4 ч • 24/7</b>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <?php
+                    $columns = get_field('table_columns');
+                    $rows = get_field('table_rows');
+
+                    if (!$columns || !$rows) {
+                        return;
+                    }
+                    ?>
+                    <div class="table_component" role="region" tabindex="0">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <?php foreach ($columns as $col): ?>
+                                        <th>
+                                            <?php echo esc_html($col['column_title']); ?><br />
+                                            <span>
+                                                <?php echo esc_html($col['column_subtitle']); ?>
+                                            </span>
+                                        </th>
+                                    <?php endforeach; ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($rows as $row): ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo esc_html($row['row_label']); ?>
+                                        </td>
+                                        <?php
+                                        $cells = $row['row_cells'] ?: [];
+                                        foreach ($cells as $i => $cell):
+                                            $col = $columns[$i] ?? null;
+                                            $label = $col ? $col['column_title'] . ' (' . $col['column_subtitle'] . ')' : '';
+                                            $icon = $cell['cell_icon'] ?? null;
+                                            $value = trim($cell['cell_value'] ?? '');
+                                            ?>
+                                            <td data-label="<?php echo esc_attr($label); ?>">
+                                                <?php if ($icon): ?>
+                                                    <img src="<?php echo esc_url($icon['url']); ?>"
+                                                        alt="<?php echo esc_attr($icon['alt']); ?>">
+                                                <?php elseif ($value === '' || $value === '-' || $value === '—'): ?>
+                                                    —
+                                                <?php else: ?>
+                                                    <?php echo wp_kses_post($value); ?>
+                                                <?php endif; ?>
+                                            </td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -455,16 +377,15 @@ get_header();
         <div class="container">
             <div class="top-footer-wrapper">
                 <div class="top-footer-left">
-                    <h1>Опишите задачу - мы соберем решение за 1 день.</h1>
+                    <h1><?= the_field('call-header'); ?></h1>
                     <p>
-                        Закрепленный менеджер. Подбор SKU, расчёт сроков, опционально
-                        визит на объект для замеров. Без обяъзательств.
+                        <?= the_field('call-description'); ?>
                     </p>
                 </div>
 
                 <div class="top-footer-right">
-                    <a href="#" class="give-btn">Получить КП ›</a>
-                    <a href="#" class="catalog-btn">К каталогу</a>
+                    <a href="<?= the_field('call-left-btn-link'); ?>" class="give-btn"><?= the_field('call-left-btn-text'); ?></a>
+                    <a href="<?= the_field('call-right-btn-link'); ?>" class="catalog-btn"><?= the_field('call-right-btn-text'); ?></a>
                 </div>
             </div>
         </div>
