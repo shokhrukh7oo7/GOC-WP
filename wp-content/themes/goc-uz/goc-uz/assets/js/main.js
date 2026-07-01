@@ -338,11 +338,16 @@ function playInlineVideo(container) {
     video.pause();
   }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".video-card");
 
-  const PLAY_ICON = "/assets/images/home/play.svg";
-  const PAUSE_ICON = "/assets/images/home/pause.svg";
+  const grid = document.querySelector(".video-grid");
+
+  const PLAY_ICON = grid.dataset.play;
+  const PAUSE_ICON = grid.dataset.pause;
+  // const PLAY_ICON = "/assets/images/home/play.svg";
+  // const PAUSE_ICON = "/assets/images/home/pause.svg";
 
   const pauseVideo = (card) => {
     const video = card.querySelector(".main-video-player");

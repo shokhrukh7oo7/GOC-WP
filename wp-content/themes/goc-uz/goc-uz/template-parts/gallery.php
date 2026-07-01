@@ -168,83 +168,71 @@ get_header();
         <div class="container">
             <div class="extra-section">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 10.02 - Видео</p>
+                    <p class="section-enter-header">
+                        <?= the_field('video-header'); ?>
+                    </p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Тайм-лапсы <br />
-                                и репортажи.
+                                <?= the_field('video-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                38 роликов с производства, монтажа на объектах, интервью с
-                                командой и обзоров продукции. Доступно на YouTube — без
-                                рекламы и без брендинга.
+                                <?= the_field('video-description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="video-container">
-                <div class="video-grid">
-                    <div class="video-card is-active">
-                        <div class="video-preview">
-                            <div class="video-overlay">
-                                <button class="play-btn">
-                                    <img src="/assets/images/home/play.svg" alt="icon" class="btn-icon" />
-                                </button>
-                                <span class="video-duration">12:48</span>
+                <div class="video-grid" data-play="<?= get_template_directory_uri(); ?>/assets/images/home/play.svg"
+                    data-pause="<?= get_template_directory_uri(); ?>/assets/images/home/pause.svg">
+                    <?php if (have_rows('videos')): ?>
+                        <?php
+                        $index = 0;
+                        while (have_rows('videos')):
+                            the_row();
+                            $video = get_sub_field('video_file');
+                            $duration = get_sub_field('duration');
+                            $title = get_sub_field('title');
+                            $heading = get_sub_field('heading');
+                            $description = get_sub_field('description');
+                            ?>
+                            <div class="video-card <?= $index === 0 ? 'is-active' : ''; ?>">
+                                <div class="video-preview">
+                                    <div class="video-overlay">
+                                        <button class="play-btn">
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/home/play.svg" alt=""
+                                                class="btn-icon">
+                                        </button>
+                                        <span class="video-duration">
+                                            <?= esc_html($duration); ?>
+                                        </span>
+                                    </div>
+                                    <video class="main-video-player" loop muted playsinline>
+                                        <source src="<?= esc_url($video['url']); ?>"
+                                            type="<?= esc_attr($video['mime_type']); ?>">
+                                    </video>
+                                </div>
+                                <div class="video-meta">
+                                    <p class="video-title">
+                                        <?= esc_html($title); ?>
+                                    </p>
+                                    <h3 class="video-header">
+                                        <?= esc_html($heading); ?>
+                                    </h3>
+                                    <p class="video-desc">
+                                        <?= esc_html($description); ?>
+                                    </p>
+                                </div>
                             </div>
-                            <video class="main-video-player" src="/assets/slide-1.mp4" loop muted playsinline></video>
-                        </div>
-                        <div class="video-meta">
-                            <p class="video-title">DOCUMENTARY · 2026</p>
-                            <h3 class="video-header">
-                                «От преформы до катушки» — экскурсия по Factory №1
-                            </h3>
-                            <p class="video-desc">
-                                Полный цикл производства оптического кабеля за 12 минут.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="video-card">
-                        <div class="video-preview">
-                            <div class="video-overlay">
-                                <button class="play-btn">
-                                    <img src="/assets/images/home/play.svg" alt="icon" class="btn-icon" />
-                                </button>
-                                <span class="video-duration">4:12</span>
-                            </div>
-                            <video class="main-video-player" src="/assets/slide-3.mp4" loop muted playsinline></video>
-                        </div>
-                        <div class="video-meta">
-                            <p class="video-title">TIME-LAPSE · 03.2026</p>
-                            <h3 class="video-header">Запуск линии А-3</h3>
-                            <p class="video-desc">
-                                5 недель пусконаладки · 240 ч съёмки → 4 мин.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="video-card">
-                        <div class="video-preview">
-                            <div class="video-overlay">
-                                <button class="play-btn">
-                                    <img src="/assets/images/home/play.svg" alt="icon" class="btn-icon" />
-                                </button>
-                                <span class="video-duration">7:30</span>
-                            </div>
-                            <video class="main-video-player" src="/assets/slide-5.mp4" loop muted playsinline></video>
-                        </div>
-                        <div class="video-meta">
-                            <p class="video-title">FIELD · 2025</p>
-                            <h3 class="video-header">Магистраль Ташкент — Самарканд</h3>
-                            <p class="video-desc">316 км подвеса ADSS с воздуха.</p>
-                        </div>
-                    </div>
+                            <?php
+                            $index++;
+                        endwhile;
+                        ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
