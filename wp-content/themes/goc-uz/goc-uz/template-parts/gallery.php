@@ -87,8 +87,10 @@ get_header();
                         ?>
                     </nav>
                     <div class="gallery-extra-links">
-                        <p class="extra-link">Вид</p>
-                        <span class="extra-link">Мозаика</span>
+                        <!-- <p class="extra-link">Вид</p>
+                        <span class="extra-link">Мозаика</span> -->
+                        <button type="button" class="extra-link view-toggle-btn active" data-view="grid">Вид</button>
+                        <button type="button" class="extra-link view-toggle-btn" data-view="mosaic">Мозаика</button>
                     </div>
                 </header>
 

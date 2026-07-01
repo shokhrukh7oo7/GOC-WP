@@ -722,6 +722,9 @@
     border: none;
     text-align: start;
   }
+  .gallery-container .gallery-grid.is-mosaic {
+    column-count: 2;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1270,6 +1273,9 @@
   }
   .catalog-detail-wrapper .price-info-wrapper {
     flex-direction: column;
+  }
+  .gallery-container .gallery-grid.is-mosaic {
+    column-count: 1;
   }
 }
 

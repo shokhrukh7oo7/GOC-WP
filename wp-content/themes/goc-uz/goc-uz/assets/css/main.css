@@ -3949,6 +3949,52 @@ header {
   gap: 15px;
 }
 
+.gallery-header .gallery-extra-links button {
+  background-color: transparent;
+  border: none;
+}
+.gallery-header .gallery-extra-links button.active {
+  background-color: var(--milk-color);
+}
+
+/* мозаика */
+/* Мозаичный режим: некоторые карточки шире/выше остальных */
+.gallery-container .gallery-grid.is-mosaic {
+  display: block;
+  column-count: 3;
+  column-gap: 5px;
+}
+
+.gallery-container .gallery-grid.is-mosaic .gallery-item {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 5px;
+}
+
+/* В мозаике картинка сохраняет свою естественную высоту, а не 100% ячейки */
+.gallery-container .gallery-grid.is-mosaic .item-inner {
+  height: auto;
+}
+
+.gallery-container .gallery-grid.is-mosaic .item-inner img {
+  height: auto;
+  object-fit: unset;
+}
+
+/* video-карточки в мозаике не должны держать фиксированный aspect-ratio */
+.gallery-container .gallery-grid.is-mosaic .item-inner.has-video {
+  aspect-ratio: unset;
+  height: auto;
+}
+
+.gallery-container .gallery-grid.is-mosaic .gallery-video,
+.gallery-container .gallery-grid.is-mosaic .video-poster {
+  position: static;
+  width: 100%;
+  height: auto;
+}
+/* мозаика */
+
 .gallery-header .gallery-extra-links p {
   font-size: 11px;
   font-weight: 400;

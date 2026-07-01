@@ -327,6 +327,24 @@ function showSolution() {
   });
 })();
 // =======================================================================================
+// мозаика / сетка
+document.addEventListener("DOMContentLoaded", function () {
+  const viewButtons = document.querySelectorAll(".view-toggle-btn");
+  const galleryGrid = document.querySelector(".gallery-grid");
+
+  if (!viewButtons.length || !galleryGrid) return;
+
+  viewButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      viewButtons.forEach((b) => b.classList.remove("active"));
+      this.classList.add("active");
+
+      const view = this.dataset.view; // 'grid' или 'mosaic'
+      galleryGrid.classList.toggle("is-mosaic", view === "mosaic");
+    });
+  });
+});
+// =======================================================================================
 function playInlineVideo(container) {
   var video = container.querySelector(".gallery-video");
 
@@ -343,6 +361,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".video-card");
 
   const grid = document.querySelector(".video-grid");
+
+  if (!grid) return;
 
   const PLAY_ICON = grid.dataset.play;
   const PAUSE_ICON = grid.dataset.pause;
