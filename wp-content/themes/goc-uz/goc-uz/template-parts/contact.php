@@ -81,7 +81,23 @@ get_header();
         <div class="container">
             <div class="extra-section">
                 <div class="contact-form-container">
-                    <div class="contact-form-wrapper-left">
+                    <?php
+                    $lang = pll_current_language();
+
+                    switch ($lang) {
+                        case 'ru':
+                            echo do_shortcode('[contact-form-7 id="1dc71b6" title="Контактная форма"]');
+                            break;
+
+                        case 'uz':
+                            echo do_shortcode('[contact-form-7 id="01922cc" title="Bog\'lanish formasi"]');
+                            break;
+
+                        case 'en':
+                            echo do_shortcode('[contact-form-7 id="12834b0" title="Contact form"]');
+                    }
+                    ?>
+                    <!-- <div class="contact-form-wrapper-left">
                         <div class="form-section">
                             <p class="eyebrow">№ 08.01 — Форма заявки</p>
                             <h1 class="heading">Опишите задачу.</h1>
@@ -90,7 +106,6 @@ get_header();
                                 доставим документы в любое удобное время
                             </p>
 
-                            <!-- Tabs -->
                             <div class="c-items">
                                 <div class="c-item active">
                                     <span class="tab-title">КП на кабель</span>
@@ -106,7 +121,6 @@ get_header();
                                 </div>
                             </div>
 
-                            <!-- Form -->
                             <form class="form-grid" onsubmit="return false;">
                                 <div class="field-row single">
                                     <div class="field">
@@ -175,7 +189,7 @@ get_header();
                                     время</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="contact-form-wrapper-right">
                         <h3><?= the_field('form-right-header'); ?></h3>
@@ -232,32 +246,6 @@ get_header();
                                     </div>
                                 <?php endwhile; ?>
                             <?php endif; ?>
-
-                            <!-- <div class="contact-user-info">
-                                <div class="user-cicle">
-                                    <span>БK</span>
-                                </div>
-
-                                <div class="user-info">
-                                    <h6>Бахром Каримов</h6>
-                                    <span>Sales director • РУЗ</span>
-                                    <p>@bkarimov</p>
-                                    <p>+998 90 140 02 01</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-user-info">
-                                <div class="user-cicle">
-                                    <span>ИЛ</span>
-                                </div>
-
-                                <div class="user-info">
-                                    <h6>Игорь Лебедев</h6>
-                                    <span>export • снг • ца</span>
-                                    <p>@i_lebedev</p>
-                                    <p>+998 90 140 02 40</p>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
