@@ -525,20 +525,17 @@ get_header();
         <div class="container">
             <div class="extra-section ready-made-solutions-section">
                 <div class="layout-section">
-                    <p class="section-enter-header">№ 08.04 - FAQ</p>
+                    <p class="section-enter-header"><?= the_field('accordion-header'); ?></p>
                     <div class="section-enter-description">
                         <div class="section-enter-left">
                             <h1>
-                                Частые <br />
-                                вопросы.
+                                <?= the_field('accordion-under-header'); ?>
                             </h1>
                         </div>
 
                         <div class="section-enter-right">
                             <p>
-                                Самые регулярные вопросы перед заключением договора —
-                                собрали ответы. Если не нашли свой — напишите менеджеру
-                                направления выше.
+                                <?= the_field('accordion-description'); ?>
                             </p>
                         </div>
                     </div>
@@ -546,59 +543,45 @@ get_header();
 
                 <div class="accordion-wrapper">
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <span>01 / 06</span>
-                                    Какой минимальный объём заказа?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Минимальный объём поставки — 500 метров. Для нестандартных
-                                    конструкций — от 2 000 метров. Для серийных SKU из
-                                    каталога — без минимума, отгружаем катушками от 250 m.
+                        <?php if (have_rows('faq_items')): ?>
+                            <?php
+                            $total = count(get_field('faq_items'));
+                            $index = 1;
+                            ?>
+                            <?php while (have_rows('faq_items')):
+                                the_row();
+                                $question = get_sub_field('question');
+                                $answer = get_sub_field('answer');
+                                $headingId = 'heading' . $index;
+                                $collapseId = 'collapse' . $index;
+                                ?>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="<?php echo $headingId; ?>">
+                                        <button class="accordion-button <?php echo $index !== 1 ? 'collapsed' : ''; ?>"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $collapseId; ?>"
+                                            aria-expanded="<?php echo $index === 1 ? 'true' : 'false'; ?>"
+                                            aria-controls="<?php echo $collapseId; ?>">
+                                            <span>
+                                                <?php echo sprintf('%02d', $index); ?>
+                                                /
+                                                <?php echo sprintf('%02d', $total); ?>
+                                            </span>
+                                            <?php echo esc_html($question); ?>
+                                        </button>
+                                    </h2>
+                                    <div id="<?php echo $collapseId; ?>"
+                                        class="accordion-collapse collapse <?php echo $index === 1 ? 'show' : ''; ?>"
+                                        aria-labelledby="<?php echo $headingId; ?>" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <?php echo wp_kses_post($answer); ?>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <span>02 / 06</span>
-                                    Сроки производства и доставки?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Минимальный объём поставки — 500 метров. Для нестандартных
-                                    конструкций — от 2 000 метров. Для серийных SKU из
-                                    каталога — без минимума, отгружаем катушками от 250 m.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <span>03 / 06</span>
-                                    Какие сертификаты и стандарты соблюдаются?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Минимальный объём поставки — 500 метров. Для нестандартных
-                                    конструкций — от 2 000 метров. Для серийных SKU из
-                                    каталога — без минимума, отгружаем катушками от 250 m.
-                                </div>
-                            </div>
-                        </div>
+                                <?php
+                                $index++;
+                            endwhile;
+                            ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
