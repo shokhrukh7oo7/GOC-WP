@@ -248,125 +248,45 @@ get_header();
                 </div>
 
                 <div class="keys-item-wrapper">
-                    <div class="keys-item">
-                        <p class="keys-date">2025 • Q4</p>
-                        <div class="keys-row">
-                            <h6>Магистраль Ташкент - Самарканд</h6>
-                            <span>Подвес ADSS · 4 этапа · ОТДР-приёмка</span>
-                        </div>
 
-                        <div class="keys-client">
-                            <span>Заказчик</span>
-                            <p>Uzbektelecom</p>
-                        </div>
+                    <?php if (have_rows('keys-items')): ?>
+                        <?php while (have_rows('keys-items')):
+                            the_row();
+                            $date = get_sub_field('keys-item-date');
+                            $head = get_sub_field('keys-item-header');
+                            $desc = get_sub_field('keys-item-description');
+                            $client = get_sub_field('keys-item-client');
+                            $client_value = get_sub_field('keys-item-client-value');
+                            $length = get_sub_field('keys-item-length');
+                            $length_value = get_sub_field('keys-item-length-value');
+                            $btn_text = get_sub_field('keys-item-btn-text');
+                            $btn_icon = get_sub_field('keys-item-btn-icon');
+                            ?>
+                            <div class="keys-item">
+                                <p class="keys-date">
+                                    <?= esc_html($date); ?>
+                                </p>
+                                <div class="keys-row">
+                                    <h6><?= esc_html($head); ?></h6>
+                                    <span><?= esc_html($desc); ?></span>
+                                </div>
 
-                        <p class="keys-row-length">316 <sub>km</sub></p>
+                                <div class="keys-client">
+                                    <span><?= esc_html($client); ?></span>
+                                    <p><?= esc_html($client_value); ?></p>
+                                </div>
 
-                        <a href="#">
-                            Подробнее
-                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
-                        </a>
-                    </div>
+                                <p class="keys-row-length">
+                                    <?= esc_html($length); ?> <sub><?= esc_html($length_value); ?></sub>
+                                </p>
 
-                    <div class="keys-item">
-                        <p class="keys-date">2025 • Q3</p>
-                        <div class="keys-row">
-                            <h6>OPGW для линии 220 kV</h6>
-                            <span>Опоры ВЛ · грозозащита · 48 волокон</span>
-                        </div>
-
-                        <div class="keys-client">
-                            <span>Заказчик</span>
-                            <p>Узбекэнерго</p>
-                        </div>
-
-                        <p class="keys-row-length">142 <sub>km</sub></p>
-
-                        <a href="#">
-                            Подробнее
-                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
-                        </a>
-                    </div>
-
-                    <div class="keys-item">
-                        <p class="keys-date">2025 • Q2</p>
-                        <div class="keys-row">
-                            <h6>Дата-центр Tier III · Чирчик</h6>
-                            <span>MTP/MPO · OM4 · 8 машинных залов</span>
-                        </div>
-
-                        <div class="keys-client">
-                            <span>Заказчик</span>
-                            <p>Beeline UZ</p>
-                        </div>
-
-                        <p class="keys-row-length">38 <sub>km</sub></p>
-
-                        <a href="#">
-                            Подробнее
-                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
-                        </a>
-                    </div>
-
-                    <div class="keys-item">
-                        <p class="keys-date">2025 • Q2</p>
-                        <div class="keys-row">
-                            <h6>FTTH Намангана</h6>
-                            <span>Last mile · drop · 18 000 абонентов</span>
-                        </div>
-
-                        <div class="keys-client">
-                            <span>Заказчик</span>
-                            <p>UCell</p>
-                        </div>
-
-                        <p class="keys-row-length">274 <sub>km</sub></p>
-
-                        <a href="#">
-                            Подробнее
-                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
-                        </a>
-                    </div>
-
-                    <div class="keys-item">
-                        <p class="keys-date">2025 • Q4</p>
-                        <div class="keys-row">
-                            <h6>ВОЛС месторождения «Кокдумалак»</h6>
-                            <span>FIRE-R · ARMOR · −40…+90 °C</span>
-                        </div>
-
-                        <div class="keys-client">
-                            <span>Заказчик</span>
-                            <p>Узбекнефтегаз</p>
-                        </div>
-
-                        <p class="keys-row-length">86 <sub>km</sub></p>
-
-                        <a href="#">
-                            Подробнее
-                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
-                        </a>
-                    </div>
-
-                    <div class="keys-item">
-                        <p class="keys-date">2025 • Q3</p>
-                        <div class="keys-row">
-                            <h6>Метро Ташкент · Сергелийская линия</h6>
-                            <span>Тоннельный кабель · LSZH · FIRE-R</span>
-                        </div>
-
-                        <div class="keys-client">
-                            <span>Заказчик</span>
-                            <p>Тошшахартрансхизмат</p>
-                        </div>
-
-                        <p class="keys-row-length">21 <sub>km</sub></p>
-
-                        <a href="#">
-                            Подробнее
-                            <img src="/assets/images/home/arrow-top.svg" alt="icon" />
-                        </a>
-                    </div>
+                                <a href="#">
+                                    <?= esc_html($btn_text); ?>
+                                    <img src="<?= esc_url($btn_icon['url']); ?>" alt="<?= esc_attr($btn_icon['alt']); ?>" />
+                                </a>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
