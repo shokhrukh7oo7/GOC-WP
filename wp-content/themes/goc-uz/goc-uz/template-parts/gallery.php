@@ -244,97 +244,62 @@ get_header();
             <div class="download-wrapper">
                 <div class="extra-section ready-made-solutions-section">
                     <div class="layout-section">
-                        <p class="section-enter-header">№ 10.03 - Pres kit</p>
+                        <p class="section-enter-header">
+                            <?= the_field('download-header'); ?>
+                        </p>
                         <div class="section-enter-description">
                             <div class="section-enter-left">
                                 <h1>
-                                    Скачать <br />
-                                    материалы.
+                                    <?= the_field('download-under-header'); ?>
                                 </h1>
                             </div>
 
                             <div class="section-enter-right">
                                 <p>
-                                    Логотипы, фирменные шрифты, продуктовые фото, рендеры и
-                                    пресс-релизы. Свободное использование с упоминанием бренда
-                                    GOC-UZ
+                                    <?= the_field('download-description'); ?>
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="download-item-wrapper">
-                        <div class="item">
-                            <div class="download-icon-wrapper">
-                                <img src="/assets/images/home/download-1.svg" alt="image" />
-                            </div>
 
-                            <div class="download-content-wrapper">
-                                <h6>Логотипы • vector</h6>
-                                <p>SVG, EPS, PDF. Версии RU/EN, моно, мнверс</p>
-                            </div>
+                        <?php if (have_rows('downloads')): ?>
+                            <?php while (have_rows('downloads')):
+                                the_row();
+                                $icon = get_sub_field('icon');
+                                $title = get_sub_field('title');
+                                $description = get_sub_field('description');
+                                $file_size = get_sub_field('file_size');
+                                $file = get_sub_field('file');
+                                $btn_icon = get_sub_field('btn-icon');
+                                ?>
+                                <div class="item">
+                                    <div class="download-icon-wrapper">
+                                        <img src="<?= esc_url($icon['url']); ?>" alt="<?= esc_attr($icon['alt']); ?>" />
+                                    </div>
 
-                            <div class="download-btn-wrapper">
-                                <p>ZIP • 4.2 MB</p>
-                                <a download href="/assets/images/check.svg">
-                                    <img src="/assets/images/home/arrow-bottom.svg" alt="icon" />
-                                </a>
-                            </div>
-                        </div>
+                                    <div class="download-content-wrapper">
+                                        <h6>
+                                            <?= esc_html($title); ?>
+                                        </h6>
+                                        <p>
+                                            <?= esc_html($description); ?>
+                                        </p>
+                                    </div>
 
-                        <div class="item">
-                            <div class="download-icon-wrapper">
-                                <img src="/assets/images/home/download-2.svg" alt="image" />
-                            </div>
-
-                            <div class="download-content-wrapper">
-                                <h6>Продуктовые фото</h6>
-                                <p>128 SKU • студия • 4000х4000</p>
-                            </div>
-
-                            <div class="download-btn-wrapper">
-                                <p>ZIP • 168 MB</p>
-                                <a download href="/assets/images/check.svg">
-                                    <img src="/assets/images/home/arrow-bottom.svg" alt="icon" />
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="download-icon-wrapper">
-                                <img src="/assets/images/home/download-3.svg" alt="image" />
-                            </div>
-
-                            <div class="download-content-wrapper">
-                                <h6>3D-рендеры катушек</h6>
-                                <p>PNG • transparent • 12 ресурсов.</p>
-                            </div>
-
-                            <div class="download-btn-wrapper">
-                                <p>ZIP • 56 MB</p>
-                                <a download href="/assets/images/check.svg">
-                                    <img src="/assets/images/home/arrow-bottom.svg" alt="icon" />
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="download-icon-wrapper">
-                                <img src="/assets/images/home/download-4.svg" alt="image" />
-                            </div>
-
-                            <div class="download-content-wrapper">
-                                <h6>Пресс-релизы 2025-2026</h6>
-                                <p>PDF • DOCX • RU и EN версии.</p>
-                            </div>
-
-                            <div class="download-btn-wrapper">
-                                <p>ZIP • 12 MB</p>
-                                <a download href="/assets/images/check.svg">
-                                    <img src="/assets/images/home/arrow-bottom.svg" alt="icon" />
-                                </a>
-                            </div>
-                        </div>
+                                    <div class="download-btn-wrapper">
+                                        <p>
+                                            <?= esc_html($file_size); ?>
+                                        </p>
+                                        <a download href="<?= esc_url($file['url']); ?>">
+                                            <img src="<?= esc_url($btn_icon['url']); ?>"
+                                                alt="<?= esc_attr($btn_icon['alt']); ?>" />
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
