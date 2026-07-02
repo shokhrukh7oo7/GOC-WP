@@ -4575,7 +4575,11 @@ header {
   gap: 8px;
 }
 
-.contact-form-container .contact-form-wrapper-left .form-section .c-items .c-item {
+.contact-form-container
+  .contact-form-wrapper-left
+  .form-section
+  .c-items
+  .c-item {
   padding: clamp(10px, 1vw, 16px) 10px;
   border: 1px solid var(--milk-color);
   background: var(--surface);
@@ -5082,10 +5086,14 @@ body {
   justify-content: space-between;
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px solid var(--gray-light);
+  border: 1px solid var(--gray-light);
+  padding: 10px;
 }
 .office-card.active .card-footer {
-  border-top-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--aqua-color);
+}
+.office-card.active .card-footer .card-coords {
+  color: var(--aqua-color);
 }
 
 .card-coords {
