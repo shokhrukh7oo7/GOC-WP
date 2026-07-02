@@ -453,3 +453,5 @@ function register_gallery_custom_post_type()
 	]);
 }
 add_action('init', 'register_gallery_custom_post_type');
+// ------------------------------------------------------------------------
+

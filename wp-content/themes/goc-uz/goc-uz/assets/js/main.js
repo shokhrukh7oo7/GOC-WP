@@ -457,123 +457,173 @@ document.addEventListener("DOMContentLoaded", () => {
 //   el.setAttribute("aria-selected", "true");
 // }
 // ================== map (tabs) =======================
-const offices = [
-  {
-    pinIds: ["pin-0"],
-    accentColor: true,
-    popup: {
-      name: "Ташкент",
-      type: "Головной офис",
-      addr: "ул. Шахрисабзская, 10<br>Alibaba Tower, 12 этаж",
-    },
-    svgX: 392,
-    svgY: 100,
-  },
-  {
-    pinIds: ["pin-1"],
-    accentColor: false,
-    popup: {
-      name: "Чирчик",
-      type: "Завод № 1",
-      addr: "СЭЗ «Ангрен», корпус 8–2",
-    },
-    svgX: 426,
-    svgY: 78,
-  },
-  {
-    pinIds: ["pin-2"],
-    accentColor: false,
-    popup: { name: "Янгиюль", type: "Завод № 2", addr: "ул. Промышленная, 4" },
-    svgX: 316,
-    svgY: 152,
-  },
-  {
-    pinIds: ["pin-3a", "pin-3b", "pin-3c"],
-    accentColor: false,
-    popup: {
-      name: "Представительства",
-      type: "Алматы · Сеул · Бишкек",
-      addr: "Региональные офисы продаж<br>и сервисной поддержки",
-    },
-    svgX: 510,
-    svgY: 38,
-  },
-];
+// const offices = [
+//   {
+//     pinIds: ["pin-0"],
+//     accentColor: true,
+//     popup: {
+//       name: "Ташкент",
+//       type: "Головной офис",
+//       addr: "ул. Шахрисабзская, 10<br>Alibaba Tower, 12 этаж",
+//     },
+//     svgX: 392,
+//     svgY: 100,
+//   },
+//   {
+//     pinIds: ["pin-1"],
+//     accentColor: false,
+//     popup: {
+//       name: "Чирчик",
+//       type: "Завод № 1",
+//       addr: "СЭЗ «Ангрен», корпус 8–2",
+//     },
+//     svgX: 426,
+//     svgY: 78,
+//   },
+//   {
+//     pinIds: ["pin-2"],
+//     accentColor: false,
+//     popup: { name: "Янгиюль", type: "Завод № 2", addr: "ул. Промышленная, 4" },
+//     svgX: 316,
+//     svgY: 152,
+//   },
+//   {
+//     pinIds: ["pin-3a", "pin-3b", "pin-3c"],
+//     accentColor: false,
+//     popup: {
+//       name: "Представительства",
+//       type: "Алматы · Сеул · Бишкек",
+//       addr: "Региональные офисы продаж<br>и сервисной поддержки",
+//     },
+//     svgX: 510,
+//     svgY: 38,
+//   },
+// ];
 
-let current = 0;
+// let current = 0;
 
-function setActive(index) {
-  const popupName = document.getElementById("popupName");
-  const popupType = document.getElementById("popupType");
-  const popupAddr = document.getElementById("popupAddr");
-  const wrap = document.getElementById("mapWrap");
-  const popup = document.getElementById("mapPopup");
+// function setActive(index) {
+//   const popupName = document.getElementById("popupName");
+//   const popupType = document.getElementById("popupType");
+//   const popupAddr = document.getElementById("popupAddr");
+//   const wrap = document.getElementById("mapWrap");
+//   const popup = document.getElementById("mapPopup");
 
-  if (!popupName || !popupType || !popupAddr || !wrap || !popup) {
-    return;
+//   if (!popupName || !popupType || !popupAddr || !wrap || !popup) {
+//     return;
+//   }
+//   // Cards
+//   document
+//     .querySelectorAll(".office-card")
+//     .forEach((c, i) => c.classList.toggle("active", i === index));
+
+//   // All pins back to default
+//   offices.forEach((o) => {
+//     o.pinIds.forEach((pid) => {
+//       const el = document.getElementById(pid);
+//       if (!el) return;
+//       const outer = el.querySelector(".pin-outer");
+//       const dot = el.querySelector("circle:not(.pin-outer):not(.pin-bg)");
+//       if (outer) {
+//         outer.setAttribute("fill", "var(--white)");
+//         outer.setAttribute("stroke", "#888");
+//         outer.setAttribute("stroke-width", "1.2");
+//         outer.setAttribute(
+//           "r",
+//           pid === "pin-0" ? "10" : pid.includes("3") ? "6.5" : "8",
+//         );
+//       }
+//       if (dot) {
+//         dot.setAttribute("fill", "#555");
+//       }
+//     });
+//   });
+
+//   // Active pins
+//   offices[index].pinIds.forEach((pid) => {
+//     const el = document.getElementById(pid);
+//     if (!el) return;
+//     const outer = el.querySelector(".pin-outer");
+//     const dot = el.querySelector("circle:not(.pin-outer):not(.pin-bg)");
+//     if (outer) {
+//       outer.setAttribute("fill", "var(--accent)");
+//       outer.setAttribute("stroke", "none");
+//     }
+//     if (dot) {
+//       dot.setAttribute("fill", "#111");
+//     }
+//   });
+
+//   // Popup
+//   const o = offices[index];
+//   document.getElementById("popupName").textContent = o.popup.name;
+//   document.getElementById("popupType").textContent = o.popup.type;
+//   document.getElementById("popupAddr").innerHTML = o.popup.addr;
+
+//   const ww = wrap.offsetWidth,
+//     wh = wrap.offsetHeight;
+//   const px = (o.svgX / 700) * ww;
+//   const py = (o.svgY / 400) * wh;
+//   popup.style.left = Math.min(px, ww - 175) + "px";
+//   popup.style.top = Math.max(py, 8) + "px";
+//   popup.classList.remove("hidden");
+
+//   current = index;
+// }
+
+// window.addEventListener("resize", () => setActive(current));
+// setTimeout(() => setActive(0), 80);
+let myMap;
+let mapMarkers = [];
+
+function initMap() {
+  if (!window.L || !offices.length) return;
+  myMap = L.map("main-leaflet-map");
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(myMap);
+
+  const markerGroup = [];
+
+  offices.forEach((office, index) => {
+    const marker = L.marker([office.lat, office.lng]).addTo(myMap);
+    marker.bindPopup(
+      `<strong>${office.name}</strong><br><small>${office.type}</small><br>${office.addr}`,
+    );
+    marker.on("click", () => switchTabOnly(index));
+    mapMarkers.push(marker);
+    markerGroup.push(marker);
+  });
+
+  if (markerGroup.length > 1) {
+    const group = L.featureGroup(markerGroup);
+    myMap.fitBounds(group.getBounds(), { padding: [40, 40] });
+  } else if (markerGroup.length === 1) {
+    myMap.setView([offices[0].lat, offices[0].lng], 14);
   }
-  // Cards
+}
+
+function switchTabOnly(index) {
   document
     .querySelectorAll(".office-card")
     .forEach((c, i) => c.classList.toggle("active", i === index));
-
-  // All pins back to default
-  offices.forEach((o) => {
-    o.pinIds.forEach((pid) => {
-      const el = document.getElementById(pid);
-      if (!el) return;
-      const outer = el.querySelector(".pin-outer");
-      const dot = el.querySelector("circle:not(.pin-outer):not(.pin-bg)");
-      if (outer) {
-        outer.setAttribute("fill", "var(--white)");
-        outer.setAttribute("stroke", "#888");
-        outer.setAttribute("stroke-width", "1.2");
-        outer.setAttribute(
-          "r",
-          pid === "pin-0" ? "10" : pid.includes("3") ? "6.5" : "8",
-        );
-      }
-      if (dot) {
-        dot.setAttribute("fill", "#555");
-      }
-    });
-  });
-
-  // Active pins
-  offices[index].pinIds.forEach((pid) => {
-    const el = document.getElementById(pid);
-    if (!el) return;
-    const outer = el.querySelector(".pin-outer");
-    const dot = el.querySelector("circle:not(.pin-outer):not(.pin-bg)");
-    if (outer) {
-      outer.setAttribute("fill", "var(--accent)");
-      outer.setAttribute("stroke", "none");
-    }
-    if (dot) {
-      dot.setAttribute("fill", "#111");
-    }
-  });
-
-  // Popup
-  const o = offices[index];
-  document.getElementById("popupName").textContent = o.popup.name;
-  document.getElementById("popupType").textContent = o.popup.type;
-  document.getElementById("popupAddr").innerHTML = o.popup.addr;
-
-  const ww = wrap.offsetWidth,
-    wh = wrap.offsetHeight;
-  const px = (o.svgX / 700) * ww;
-  const py = (o.svgY / 400) * wh;
-  popup.style.left = Math.min(px, ww - 175) + "px";
-  popup.style.top = Math.max(py, 8) + "px";
-  popup.classList.remove("hidden");
-
-  current = index;
 }
 
-window.addEventListener("resize", () => setActive(current));
-setTimeout(() => setActive(0), 80);
-// ====== detail catalog not finished
+function setActive(index) {
+  if (!myMap || !offices[index]) return;
+  switchTabOnly(index);
+  myMap.flyTo([offices[index].lat, offices[index].lng], 14, {
+    duration: 0.8,
+  });
+  mapMarkers[index].openPopup();
+}
+
+// Запуск карты после полной загрузки DOM
+document.addEventListener("DOMContentLoaded", initMap);
+// ====================================================================== detail catalog not finished
 // Gallery thumbs
 function setThumb(el, src) {
   document
